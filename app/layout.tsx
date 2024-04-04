@@ -1,7 +1,9 @@
+import Header from "@/components/shared/Header";
+import appConfig from "@/constants/appConfig";
+import Logo from "@/screens/main/Logo";
 import type { Metadata } from "next";
 import { Lora } from "next/font/google";
 import "./globals.css";
-import appConfig from "@/constants/appConfig";
 
 const lora = Lora({
   subsets: ["latin", "latin-ext"],
@@ -34,7 +36,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={lora.className}>{children}</body>
+      <body className={`h-full w-screen ${lora.className}`}>
+        <Logo />
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
