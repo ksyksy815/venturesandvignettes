@@ -2,12 +2,18 @@ import Header from "@/components/shared/Header";
 import appConfig from "@/constants/appConfig";
 import Logo from "@/screens/main/Logo";
 import type { Metadata } from "next";
-import { Lora } from "next/font/google";
+import { Lora, Montserrat } from "next/font/google";
 import "./globals.css";
 
 const lora = Lora({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
 });
 
@@ -36,8 +42,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`h-full w-screen ${lora.className}`}>
-        <Logo />
+      <body
+        className={`flex-center flex-col h-full w-screen ${lora.className} `}>
         <Header />
         {children}
       </body>
