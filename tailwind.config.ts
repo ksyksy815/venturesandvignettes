@@ -20,6 +20,13 @@ const config: Config = {
     },
     extend: {
       colors: {
+        vv: {
+          white: "#DFDCD4",
+          orange: "#F1723B",
+          green: "#669865",
+          yellow: "#F7D052",
+          blue: "#AECACD",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
