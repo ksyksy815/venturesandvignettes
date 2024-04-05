@@ -17,7 +17,8 @@ const NavItems = () => {
             key={name}
             className={`${
               isActive && `text-primary-500`
-            } flex-center p-medium whitespace-nowrap hover:font-semibold`}>
+            } flex w-full p-medium whitespace-nowrap hover:font-semibold border-b border-black pb-5 md:pb-0 md:border-none md:flex-center`}
+          >
             <Link href={path}>{name}</Link>
           </li>
         );

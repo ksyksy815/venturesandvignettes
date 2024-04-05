@@ -1,5 +1,5 @@
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { FiMenu } from "react-icons/fi";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import NavItems from "./NavItems";
 
 const MobileNav = () => {
@@ -9,7 +9,7 @@ const MobileNav = () => {
         <SheetTrigger>
           <FiMenu size={"20px"} />
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className="pt-[100px]">
           <NavItems />
         </SheetContent>
       </Sheet>

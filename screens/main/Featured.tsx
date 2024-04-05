@@ -1,5 +1,7 @@
+"use client";
+
 const Featured = () => {
-  return <div>Featured</div>;
+  return <div className={"border border-red-700"}>Featured</div>;
 };
 
 export default Featured;
