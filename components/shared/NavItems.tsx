@@ -17,9 +17,9 @@ const NavItems = () => {
             key={name}
             className={`${
               isActive && `text-primary-500`
-            } flex w-full p-medium whitespace-nowrap hover:font-semibold border-b border-black pb-5 md:pb-0 md:border-none md:flex-center`}
+            } flex w-full p-medium whitespace-nowrap hover:font-semibold hover:text-vv-white border-b border-black pb-5 md:pb-0 md:border-none md:flex-center md:hover:text-vv-orange`}
           >
-            <Link href={path}>{name}</Link>
+            <Link href={path}>{name} </Link>
           </li>
         );
       })}

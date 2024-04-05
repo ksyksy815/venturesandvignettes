@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "_id": "0987654321fedcba",
+      "author": {
+        "_id": "author02",
+        "firstName": "Emma",
+        "lastName": "Smith"
+      },
+      "title": "A Culinary Journey Through Berlin's Historic Streets",
+      "slug": "culinary-journey-berlin",
+      "summary": "Join us as we taste our way through Berlin, exploring the city's rich culinary history and modern gastronomic innovations, from classic bratwurst to contemporary fusion cuisine.",
+      "content": "Berlin isn't just a haven for history buffs; it's also a paradise for food lovers. This article takes you through the historic streets of Berlin, offering a taste of both traditional German fare and innovative culinary creations that make the city a gastronomic hotspot...",
+      "category": {
+        "_id": "cat02",
+        "name": "Food"
+      },
+      "tags": [
+        { "_id": "tag04", "name": "Food" },
+        { "_id": "tag02", "name": "Berlin" },
+        { "_id": "tag05", "name": "Cuisine" }
+      ],
+      "createdAt": "2024-04-10T09:00:00Z",
+      "updatedAt": "2024-04-12T11:00:00Z",
+      "isDisplayed": true,
+      "comments": [],
+      "image": "https://example.com/images/berlin-cuisine.jpg",
+      "thumbnailImage": "https://example.com/images/thumbnails/berlin-cuisine-thumb.jpg"
+    },
+    {
+      "_id": "1234567890abcdef",
+      "author": {
+        "_id": "author01",
+        "firstName": "Alex",
+        "lastName": "Johnson"
+      },
+      "title": "The Hidden Gems of Berlin's Art Scene",
+      "slug": "hidden-gems-berlin-art-scene",
+      "summary": "Explore the lesser-known yet fascinating art hubs of Berlin, from street art in Kreuzberg to avant-garde galleries in Mitte.",
+      "content": "Berlin, a city known for its vibrant history and cultural richness, offers more than meets the eye. In this article, we delve into the heart of Berlin's art scene, uncovering hidden galleries and street art marvels that showcase the city's artistic diversity...",
+      "category": {
+        "_id": "cat01",
+        "name": "Travel"
+      },
+      "tags": [
+        {
+          "_id": "tag01",
+          "name": "Art"
+        },
+        {
+          "_id": "tag02",
+          "name": "Berlin"
+        },
+        {
+          "_id": "tag03",
+          "name": "Culture"
+        }
+      ],
+      "createdAt": "new Date(\"2024-03-01T10:00:00Z\")",
+      "updatedAt": "new Date(\"2024-03-05T15:00:00Z\")",
+      "isDisplayed": true,
+      "comments": [],
+      "image": "https://example.com/images/berlin-art-scene.jpg",
+      "thumbnailImage": "https://example.com/images/thumbnails/berlin-art-scene-thumb.jpg"
+    },
+    {
+      "_id": "24681012abcdef",
+      "author": {
+        "_id": "author03",
+        "firstName": "Mia",
+        "lastName": "Williams"
+      },
+      "title": "Exploring the Heart of Berlin's Music Scene",
+      "slug": "berlin-music-scene-heart",
+      "summary": "Dive into the vibrant music scene of Berlin, from iconic clubs to underground music halls, and discover how this city became a hub for music lovers worldwide.",
+      "content": "Berlin's heartbeat is its music. This article explores the city's dynamic music scene, taking you from the legendary techno clubs to intimate jazz bars. Experience the sounds that define Berlin's eclectic and electric spirit...",
+      "category": {
+        "_id": "cat03",
+        "name": "Music"
+      },
+      "tags": [
+        { "_id": "tag06", "name": "Music" },
+        { "_id": "tag02", "name": "Berlin" },
+        { "_id": "tag07", "name": "Nightlife" }
+      ],
+      "createdAt": "2024-05-20T13:00:00Z",
+      "updatedAt": "2024-05-22T17:30:00Z",
+      "isDisplayed": true,
+      "comments": [],
+      "image": "https://example.com/images/berlin-music-scene.jpg",
+      "thumbnailImage": "https://example.com/images/thumbnails/berlin-music-scene-thumb.jpg"
+    }
+  ]
+}

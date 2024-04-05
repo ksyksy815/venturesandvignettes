@@ -1,4 +1,6 @@
+import Header from "@/components/shared/Header";
 import appConfig from "@/constants/appConfig";
+import Footer from "@/screens/main/Footer";
 import type { Metadata } from "next";
 import { Lora } from "next/font/google";
 import "./globals.css";
@@ -34,7 +36,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lora.className} `}>{children}</body>
+      <body
+        className={`relative flex items-center h-screen flex-col w-screen ${lora.className} `}
+      >
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

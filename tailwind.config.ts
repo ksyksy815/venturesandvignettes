@@ -21,6 +21,7 @@ const config: Config = {
     extend: {
       colors: {
         vv: {
+          black: "#242424",
           white: "#DFDCD4",
           orange: "#F1723B",
           green: "#669865",

@@ -1,0 +1,38 @@
+{
+  "data": {
+    "_id": "1234567890abcdef",
+    "author": {
+      "_id": "author01",
+      "firstName": "Alex",
+      "lastName": "Johnson"
+    },
+    "title": "The Hidden Gems of Berlin's Art Scene",
+    "slug": "hidden-gems-berlin-art-scene",
+    "summary": "Explore the lesser-known yet fascinating art hubs of Berlin, from street art in Kreuzberg to avant-garde galleries in Mitte.",
+    "content": "Berlin, a city known for its vibrant history and cultural richness, offers more than meets the eye. In this article, we delve into the heart of Berlin's art scene, uncovering hidden galleries and street art marvels that showcase the city's artistic diversity...",
+    "category": {
+      "_id": "cat01",
+      "name": "Travel"
+    },
+    "tags": [
+      {
+        "_id": "tag01",
+        "name": "Art"
+      },
+      {
+        "_id": "tag02",
+        "name": "Berlin"
+      },
+      {
+        "_id": "tag03",
+        "name": "Culture"
+      }
+    ],
+    "createdAt": "new Date(\"2024-03-01T10:00:00Z\")",
+    "updatedAt": "new Date(\"2024-03-05T15:00:00Z\")",
+    "isDisplayed": true,
+    "comments": [],
+    "image": "https://example.com/images/berlin-art-scene.jpg",
+    "thumbnailImage": "https://example.com/images/thumbnails/berlin-art-scene-thumb.jpg"
+  }
+}
