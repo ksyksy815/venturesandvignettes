@@ -22,7 +22,9 @@ const config: Config = {
       colors: {
         vv: {
           black: "#242424",
-          orange: "F1723B",
+          orange: "#F1723B",
+          darkGray: "#979797",
+          lightGray: "#f4f4f4",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -66,6 +66,10 @@
   }
 }
 
+body {
+  letter-spacing: -0.3px;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -92,4 +96,23 @@
     @apply font-bold text-[40px] leading-[48px] lg:text-[48px] lg:leading-[60px];
   }
 
+  .h1 {
+    @apply text-4xl md:text-[40px] font-bold leading-10
+  }
+
+  .h2 {
+    @apply text-[32px] md:text-4xl font-bold leading-none
+  }
+
+  .h3 {
+    @apply text-[28px] md:text-[32px] font-semibold leading-8 md:leading-9
+  }
+
+  .p1 {
+    @apply text-xl md:text-2xl leading-7 md:leading-9
+  }
+
+  .p2 {
+    @apply text-base text-vv-darkGray leading-4
+  }
 }

@@ -58,9 +58,7 @@ const FeaturedSlider = () => {
                 <div
                   className={`absolute bottom-0 flex flex-col mx-6 mb-[70px] pl-6 border-l border-white text-white gap-y-6 max-w-[826px] md:mx-8 md:pl-8`}
                 >
-                  <h1 className={`text-4xl font-semibold md:text-[40px]`}>
-                    {title}
-                  </h1>
+                  <h1 className={`h1`}>{title}</h1>
                   <p className={`text-xl md:text-2xl`}>{description}</p>
                 </div>
 
