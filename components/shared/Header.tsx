@@ -1,20 +1,18 @@
-import Logo from "@/screens/main/Logo";
-import MobileNav from "./MobileNav";
-import NavItems from "./NavItems";
+import { FiSearch } from "react-icons/fi";
 
 const Header = () => {
   return (
     <header
-      className={`sticky top-0 z-50 w-full flex-between p-5 flex-row max-w-5xl border-b border-black md:flex-col md:p-0 md:pt-5 md:gap-y-5 bg-white/90 backdrop-blur-md`}
+      className={`flex items-center justify-center w-full bg-white border-b border-black/15`}
     >
-      <Logo />
-      <nav
-        className={`relative hidden md:flex w-full border-t border-black p-5 after:contents-[""] after:w-full after:h-[1px] after:bg-black after:absolute after:top-[-4px] after:left-0`}
+      <div
+        className={`flex items-center justify-between w-full max-w-5xl p-3 lg:px-6`}
       >
-        <NavItems />
-      </nav>
-
-      <MobileNav />
+        <p className={`text-6`}>Ventures & vignettes</p>
+        <button type={"button"}>
+          <FiSearch size={24} />
+        </button>
+      </div>
     </header>
   );
 };
