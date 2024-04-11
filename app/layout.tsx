@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`relative flex items-center h-screen flex-col w-screen ${lora.className} `}
+        className={`relative flex items-center h-screen flex-col w-screen ${lora.className} bg-vv-lightGray `}
       >
         <Header />
         {children}

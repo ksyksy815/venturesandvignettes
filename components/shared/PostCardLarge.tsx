@@ -36,7 +36,7 @@ const PostCardLarge = ({
   return (
     <Link
       href={`/posts/${slug}-${id}`}
-      className={`w-full flex flex-col border border-black flex-1`}
+      className={`w-full flex flex-col border border-black flex-1 bg-white`}
     >
       <div className={`w-full h-[200px]`}>
         {/*  // eslint-disable-next-line @next/next/no-img-element */}

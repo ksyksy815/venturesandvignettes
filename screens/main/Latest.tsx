@@ -1,4 +1,4 @@
-import PostList from "./PostList";
+import PostList from "../../components/shared/PostList";
 
 const Latest = () => {
   return (
