@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 
@@ -39,7 +40,6 @@ const PostCardLarge = ({
       className={`w-full flex flex-col border border-black flex-1 bg-white`}
     >
       <div className={`w-full h-[200px]`}>
-        {/*  // eslint-disable-next-line @next/next/no-img-element */}
         <img src={image} alt={title} className={`w-full h-full object-cover`} />
       </div>
       <div
