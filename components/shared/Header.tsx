@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FiSearch } from "react-icons/fi";
 
 const Header = () => {
@@ -8,7 +9,9 @@ const Header = () => {
       <div
         className={`flex items-center justify-between w-full max-w-5xl p-3 lg:px-6`}
       >
-        <p className={`text-xl font-bold`}>Ventures & Vignettes</p>
+        <Link href={"/"}>
+          <span className={`text-xl font-bold`}>Ventures & Vignettes</span>
+        </Link>
         <button type={"button"}>
           <FiSearch size={24} />
         </button>
