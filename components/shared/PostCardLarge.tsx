@@ -55,7 +55,7 @@ const PostCardLarge = ({
 
         <button
           type={"button"}
-          className={`text-base flex-center gap-x-2 self-end hover:text-vv-orange`}
+          className={`text-base flex-center gap-x-2 self-end hover:text-vv-orange hover:font-medium`}
         >
           READ MORE
           <FiArrowRight size={14} />
