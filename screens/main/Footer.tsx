@@ -34,8 +34,12 @@ const Footer = () => {
           </li>
           <li className={`hover:text-vv-orange`}>
             <Link href={`/terms-of-use`} prefetch={false}>
-              {" "}
               Terms of Use
+            </Link>
+          </li>
+          <li>
+            <Link href={`/login`} prefetch={false}>
+              Login
             </Link>
           </li>
         </ul>

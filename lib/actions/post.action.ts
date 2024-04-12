@@ -7,11 +7,11 @@ import {
   GetBlogPostsByCategory,
   GetBlogPostsByTagParams,
   UpdateBlogPostParams,
-} from "@/types/blogPost.type";
+} from "@/types/post.type";
 import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../database";
-import { BlogPost } from "../database/models/blogPost.model";
 import { Category } from "../database/models/category.model";
+import { Post } from "../database/models/post.model";
 import User from "../database/models/user.model";
 import { handleError } from "../utils";
 
@@ -41,7 +41,7 @@ export const createBlogPost = async ({
   try {
     await connectToDatabase();
 
-    const newPost = await BlogPost.create({
+    const newPost = await Post.create({
       ...blogPost,
       author: userId,
       category: blogPost.categoryId,
@@ -83,13 +83,13 @@ export const getAllBlogPosts = async ({
     };
 
     const skipAmount = (Number(page) - 1) * limit;
-    const blogPostQuery = BlogPost.find(conditions)
+    const blogPostQuery = Post.find(conditions)
       .sort({ createdAt: "desc" })
       .skip(skipAmount)
       .limit(limit);
 
     const blogPosts = await populatePost(blogPostQuery);
-    const blogCount = await BlogPost.countDocuments(conditions);
+    const blogCount = await Post.countDocuments(conditions);
 
     return {
       data: JSON.parse(JSON.stringify(blogPosts)),
@@ -104,7 +104,7 @@ export const getBlogPostById = async (postId: string) => {
   try {
     await connectToDatabase();
 
-    const post = await BlogPost.findById(postId);
+    const post = await Post.findById(postId);
 
     if (!post) throw new Error("Post not found");
 
@@ -125,13 +125,13 @@ export const getBlogPostsByTag = async ({
     const skipAmount = (Number(page) - 1) * limit;
     const conditions = { tags: { $regex: tag, $options: "i" } };
 
-    const blogPostQuery = await BlogPost.find(conditions)
+    const blogPostQuery = await Post.find(conditions)
       .sort({ createdAt: "desc" })
       .skip(skipAmount)
       .limit(limit);
 
     const blogPost = await populatePost(blogPostQuery);
-    const postCount = await BlogPost.countDocuments(conditions);
+    const postCount = await Post.countDocuments(conditions);
 
     return {
       data: JSON.parse(JSON.stringify(blogPost)),
@@ -153,13 +153,13 @@ export const getBlogPostsByCategory = async ({
     const skipAmount = (Number(page) - 1) * limit;
     const conditions = { category: await getCategoryByName(category) };
 
-    const blogPostQuery = await BlogPost.find(conditions)
+    const blogPostQuery = await Post.find(conditions)
       .sort({ createdAt: "desc" })
       .skip(skipAmount)
       .limit(limit);
 
     const blogPost = await populatePost(blogPostQuery);
-    const postCount = await BlogPost.countDocuments(conditions);
+    const postCount = await Post.countDocuments(conditions);
 
     return {
       data: JSON.parse(JSON.stringify(blogPost)),
@@ -178,10 +178,10 @@ export const updateBlogPost = async ({
   try {
     await connectToDatabase();
 
-    const postToUpdate = await BlogPost.findById(blogPostId);
+    const postToUpdate = await Post.findById(blogPostId);
     if (!postToUpdate) throw new Error("Post not found");
 
-    const updatedPost = await BlogPost.findByIdAndUpdate(
+    const updatedPost = await Post.findByIdAndUpdate(
       blogPost._id,
       { ...blogPost, updatedAt: new Date(), category: blogPost.categoryId },
       { new: true }
@@ -202,7 +202,7 @@ export const deleteBlogPost = async ({
   try {
     await connectToDatabase();
 
-    const deletedPost = await BlogPost.findByIdAndDelete(blogPostId);
+    const deletedPost = await Post.findByIdAndDelete(blogPostId);
     if (deletedPost) revalidatePath(path);
   } catch (error) {
     handleError(error);

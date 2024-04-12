@@ -18,7 +18,7 @@ export interface IPost extends Document {
   thumbnailImage: string; // 16:9 ratio. a smaller version of the cover image in the content
 }
 
-const blogPostSchema = new Schema<IPost>({
+const postSchema = new Schema<IPost>({
   author: { type: Schema.Types.ObjectId, ref: "User", required: true },
   title: { type: String, required: true },
   slug: { type: String, required: true },
@@ -34,5 +34,4 @@ const blogPostSchema = new Schema<IPost>({
   thumbnailImage: { type: String, required: true },
 });
 
-export const BlogPost =
-  models.BlogPost || model<IPost>("BlogPost", blogPostSchema);
+export const Post = models.BlogPost || model<IPost>("BlogPost", postSchema);

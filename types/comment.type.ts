@@ -1,6 +1,6 @@
 export type CreateCommentParams = {
   user: string;
-  blogPostId: string;
+  postId: string;
   comment: {
     content: string;
     password: string;
@@ -15,5 +15,5 @@ export type Comment = {
   password: string;
   createdAt: Date;
   isAccepted: boolean;
-  blogPostId: string;
+  postId: string;
 };
