@@ -37,7 +37,7 @@ const PostCardLarge = ({
   return (
     <Link
       href={`/posts/${slug}-${id}`}
-      className={`w-full flex flex-col border border-black flex-1 bg-white`}
+      className={`w-full flex flex-col border border-black flex-1 bg-white rounded-lg overflow-hidden`}
     >
       <div className={`w-full h-[200px]`}>
         <img src={image} alt={title} className={`w-full h-full object-cover`} />
