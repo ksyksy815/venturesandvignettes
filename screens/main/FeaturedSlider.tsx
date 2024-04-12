@@ -36,7 +36,7 @@ const FeaturedSlider = () => {
         id="whatareyou"
         opts={{ align: "start" }}
         setApi={setApi}
-        className="w-full h-full bg-yellow-300"
+        className="w-full h-full"
       >
         <CarouselContent className={`h-full w-full m-0`}>
           {data.map((item) => {
@@ -52,7 +52,7 @@ const FeaturedSlider = () => {
                   />
                 </div>
                 <div
-                  className={`absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-[rgba(0,0,0,0.4)] opacity-60`}
+                  className={`absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent to-[rgba(0,0,0,0.4)] opacity-80`}
                 />
 
                 <div

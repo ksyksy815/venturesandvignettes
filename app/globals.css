@@ -101,11 +101,11 @@ body {
   }
 
   .h3 {
-    @apply text-xl lg:text-2xl font-medium leading-8 lg:leading-9
+    @apply text-xl lg:text-2xl font-medium
   }
 
   .p1 {
-    @apply text-base lg:text-lg leading-4 lg:leading-5
+    @apply text-lg lg:text-xl
   }
 
   .p2 {

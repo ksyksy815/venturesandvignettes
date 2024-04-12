@@ -9,7 +9,7 @@ const useFetchPostList = () => {
         "Dive deep into the enigmatic world of Geishas in Kyoto, exploring their traditions, art, and daily lives.",
       content:
         "Extensive article content about Geisha culture, interviews with local Geishas, and a visit to a traditional teahouse...",
-      category: "cultural immersion",
+      category: "Cultural Immersion",
       tags: ["Japan", "Traditions"],
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -27,7 +27,7 @@ const useFetchPostList = () => {
         "Journey along the historic Silk Road, tracing the footsteps of merchants and explorers through Asia.",
       content:
         "A detailed narrative of traveling the Silk Road, including visits to key sites like Samarkand and Bukhara...",
-      category: "historic-journeys",
+      category: "Historic Journeys",
       tags: ["SilkRoad", "AsiaHistory"],
       createdAt: new Date("2024-03-04T08:39:36"),
       updatedAt: new Date("2024-03-04T08:39:36"),
@@ -45,7 +45,7 @@ const useFetchPostList = () => {
         "Discover the rugged and breathtaking landscapes of Patagonia, from its massive glaciers to remote trails.",
       content:
         "Detailed travelogue of Patagonia's natural beauty, including hiking guides and wildlife encounters...",
-      category: "nature-escapes",
+      category: "Nature Escapes",
       tags: ["Hiking", "Patagonia"],
       createdAt: new Date("2024-03-02T08:39:36"),
       updatedAt: new Date("2024-03-20T00:02:01"),
@@ -63,7 +63,7 @@ const useFetchPostList = () => {
         "Embark on a gastronomic tour of Italy, sampling the finest dishes and wines from Rome to the shores of Sicily.",
       content:
         "An epicurean journey through Italy, featuring restaurant reviews, local recipes, and wine tastings...",
-      category: "culinary-adventures",
+      category: "Culinary Adventures",
       tags: ["ItalianCuisine", "WineTasting"],
       createdAt: new Date("2024-03-01T08:39:36"),
       updatedAt: new Date("2024-03-20T00:02:01"),
@@ -81,7 +81,7 @@ const useFetchPostList = () => {
         "Experience the lesser-known facets of New York City, exploring its hidden neighborhoods and unique local culture.",
       content:
         "An insider's guide to NYC's hidden gems, including exclusive interviews with locals and tips on off-the-beaten-path experiences...",
-      category: "urban-exploration",
+      category: "Urban Exploration",
       tags: ["NewYork", "CityLife"],
       createdAt: new Date("2024-02-14T08:39:36"),
       updatedAt: new Date("2024-02-14T08:39:36"),
@@ -97,7 +97,7 @@ const useFetchPostList = () => {
       slug: "budget-backpacking-sea",
       summary: "Backpacking Southeast Asia on a Shoestring summary.",
       content: "Backpacking Southeast Asia on a Shoestring content.",
-      category: "budget backpacking",
+      category: "Budget Backpacking",
       tags: ["BudgetTravel", "SoutheastAsia"],
       createdAt: new Date("2024-01-22T12:51:51"),
       updatedAt: new Date("2024-01-22T12:51:51"),

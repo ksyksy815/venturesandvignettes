@@ -43,23 +43,22 @@ const PostCardLarge = ({
         <img src={image} alt={title} className={`w-full h-full object-cover`} />
       </div>
       <div
-        className={`md:h-[397px] w-full flex flex-col px-4 py-8 gap-y-8 border-t border-black`}
+        className={`w-full flex flex-col justify-between px-5 py-5 gap-y-7 border-t border-black lg:h-[305px]`}
       >
-        <div className={`flex flex-col w-full gap-y-1`}>
-          <p className={`p2`}>{category}</p>
-          <h3 className={`h3 hover:text-vv-orange line-clamp-3`}>{title}</h3>
+        <div className={`w-full flex flex-col gap-y-5`}>
+          <div className={`flex flex-col w-full gap-y-1`}>
+            <p className={`p2`}>{category}</p>
+            <h3 className={`h2 hover:text-vv-orange line-clamp-3`}>{title}</h3>
+          </div>
+          <p className={`p1 hover:text-vv-orange line-clamp-3`}>{summary}</p>
         </div>
-        <p
-          className={`h-[84px] md:h-auto p1 hover:text-vv-orange line-clamp-3`}
-        >
-          {summary}
-        </p>
+
         <button
           type={"button"}
-          className={`flex-center gap-x-2 self-end hover:text-vv-orange`}
+          className={`text-base flex-center gap-x-2 self-end hover:text-vv-orange`}
         >
           READ MORE
-          <FiArrowRight />
+          <FiArrowRight size={14} />
         </button>
       </div>
     </Link>
