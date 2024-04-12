@@ -1,14 +1,12 @@
-"use client";
-
 import PostCardLarge from "@/components/shared/PostCardLarge";
-import useFetchPostList from "@/hooks/post/useFetchPostList";
 
-const PostList = () => {
-  const { data } = useFetchPostList();
-
+type Props = {
+  list: any[];
+};
+const PostList = ({ list }: Props) => {
   return (
-    <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-4`}>
-      {data.map((post) => (
+    <div className={`w-full grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8`}>
+      {list.map((post) => (
         <div key={post.id} className={`w-full`}>
           <PostCardLarge key={post.id} {...post} />
         </div>

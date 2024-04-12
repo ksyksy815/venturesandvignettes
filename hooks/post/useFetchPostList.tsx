@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const useFetchPostList = () => {
+  const [currentCategory, setCurrentCategory] = useState("ALL");
+
   const data = [
     {
       id: "123",
@@ -9,7 +13,7 @@ const useFetchPostList = () => {
         "Dive deep into the enigmatic world of Geishas in Kyoto, exploring their traditions, art, and daily lives.",
       content:
         "Extensive article content about Geisha culture, interviews with local Geishas, and a visit to a traditional teahouse...",
-      category: "Cultural Immersion",
+      category: "Cultural Immersions",
       tags: ["Japan", "Traditions"],
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -81,7 +85,7 @@ const useFetchPostList = () => {
         "Experience the lesser-known facets of New York City, exploring its hidden neighborhoods and unique local culture.",
       content:
         "An insider's guide to NYC's hidden gems, including exclusive interviews with locals and tips on off-the-beaten-path experiences...",
-      category: "Urban Exploration",
+      category: "Urban Explorations",
       tags: ["NewYork", "CityLife"],
       createdAt: new Date("2024-02-14T08:39:36"),
       updatedAt: new Date("2024-02-14T08:39:36"),
@@ -108,8 +112,17 @@ const useFetchPostList = () => {
     },
   ];
 
+  const updateCurrentCategory = (name: string) => {
+    setCurrentCategory(name);
+  };
+
   return {
-    data,
+    data:
+      currentCategory === "ALL"
+        ? data
+        : data.filter((post) => post.category === currentCategory),
+    currentCategory,
+    updateCurrentCategory,
   };
 };
 
