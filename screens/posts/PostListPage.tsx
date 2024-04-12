@@ -4,6 +4,7 @@ import PostList from "@/components/shared/PostList";
 import useFetchPostList from "@/hooks/post/useFetchPostList";
 import Categories from "./Categories";
 import NoPost from "./NoPost";
+import Pagination from "./Pagination";
 
 const PostListPage = () => {
   const { data, currentCategory, updateCurrentCategory } = useFetchPostList();
@@ -16,7 +17,14 @@ const PostListPage = () => {
         currentCategory={currentCategory}
         updateCategoryName={updateCurrentCategory}
       />
-      {data?.length > 1 ? <PostList list={data} /> : <NoPost />}
+      {data?.length > 1 ? (
+        <>
+          <PostList list={data} />
+          <Pagination totalPages={1} currentPage={0 + 1} />
+        </>
+      ) : (
+        <NoPost />
+      )}
     </section>
   );
 };
