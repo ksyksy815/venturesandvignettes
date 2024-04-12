@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FiSearch } from "react-icons/fi";
+import SearchButton from "./SearchButton";
 
 const Header = () => {
   return (
@@ -12,9 +12,7 @@ const Header = () => {
         <Link href={"/"}>
           <span className={`text-xl font-bold`}>Ventures & Vignettes</span>
         </Link>
-        <button type={"button"}>
-          <FiSearch size={24} />
-        </button>
+        <SearchButton />
       </div>
     </header>
   );
