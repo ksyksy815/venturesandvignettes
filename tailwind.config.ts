@@ -18,15 +18,23 @@ const config: Config = {
         "2xl": "1400px",
       },
     },
+    fontSize: {
+      sm: "12px",
+      base: "14px",
+      lg: "16px",
+      xl: "18px",
+      "2xl": "24px",
+      "3xl": "28px",
+      "4xl": "32px",
+      "5xl": "36px",
+    },
     extend: {
       colors: {
         vv: {
           black: "#242424",
-          white: "#DFDCD4",
           orange: "#F1723B",
-          green: "#669865",
-          yellow: "#F7D052",
-          blue: "#AECACD",
+          darkGray: "#979797",
+          lightGray: "#f4f4f4",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -83,7 +91,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar-hide")],
 };
 
 export default config;

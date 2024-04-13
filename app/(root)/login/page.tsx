@@ -1,10 +1,10 @@
 import BasePage from "@/components/shared/BasePage";
-import PostListPage from "@/screens/posts/PostListPage";
+import LoginPage from "@/screens/login/LoginPage";
 
 const Page = () => {
   return (
     <BasePage>
-      <PostListPage />
+      <LoginPage />
     </BasePage>
   );
 };

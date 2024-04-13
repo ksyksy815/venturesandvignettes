@@ -66,6 +66,10 @@
   }
 }
 
+body {
+  letter-spacing: -0.3px;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -88,8 +92,23 @@
     @apply text-2xl font-bold
   }
 
-  .page-header {
-    @apply font-bold text-[40px] leading-[48px] lg:text-[48px] lg:leading-[60px];
+  .h1 {
+    @apply text-4xl lg:text-5xl font-bold leading-9 lg:leading-10
   }
 
+  .h2 {
+    @apply text-2xl lg:text-3xl font-semibold leading-7 lg:leading-8
+  }
+
+  .h3 {
+    @apply text-xl lg:text-2xl font-medium
+  }
+
+  .p1 {
+    @apply text-lg lg:text-xl
+  }
+
+  .p2 {
+    @apply text-sm lg:text-base leading-none
+  }
 }
