@@ -1,17 +1,23 @@
-export type CreateUserParams = {
-  clerkId: string;
+import { UserRole } from "@/lib/database/models/user.model";
+
+export type AddNewUserParams = {
+  email: string;
+  password: string;
+  username: string;
   firstName: string;
   lastName: string;
-  username: string;
-  email: string;
-  photo: string;
-  isAdmin?: boolean;
+  photo?: string;
 };
 
 export type UpdateUserParams = {
-  firstName: string;
-  lastName: string;
-  username: string;
-  photo: string;
-  isAdmin?: boolean;
+  currentUserId: string;
+  userIdToUpdate: string;
+  fieldsToUpdate: {
+    username?: string;
+    password?: string;
+    firstName?: string;
+    lastName?: string;
+    photo?: string;
+    userRole?: UserRole;
+  };
 };
