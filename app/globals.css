@@ -4,22 +4,22 @@
 
 @layer base {
   :root {
-    --background: #DFDCD4;
+    --background: #dfdcd4;
     --foreground: #242424;
 
-    --card: #DFDCD4;
+    --card: #dfdcd4;
     --card-foreground: #242424;
 
-    --popover: #DFDCD4;
+    --popover: #dfdcd4;
     --popover-foreground: #242424;
 
-    --primary: #F1723B;
+    --primary: #f1723b;
     --primary-foreground: 210 40% 98%;
 
     --secondary: #669865;
-    --secondary-foreground: #F1723B;
+    --secondary-foreground: #f1723b;
 
-    --muted: #AECACD;
+    --muted: #aecacd;
     --muted-foreground: #242424;
 
     --accent: #f7d052;
@@ -37,21 +37,21 @@
 
   .dark {
     --background: #242424;
-    --foreground: #DFDCD4;
+    --foreground: #dfdcd4;
 
     --card: #242424;
-    --card-foreground: #DFDCD4;
+    --card-foreground: #dfdcd4;
 
     --popover: #242424;
-    --popover-foreground: #DFDCD4;
+    --popover-foreground: #dfdcd4;
 
     --primary: 210 40% 98%;
-    --primary-foreground: #F1723B;
+    --primary-foreground: #f1723b;
 
     --secondary: #669865;
-    --secondary-foreground: #F1723B;
+    --secondary-foreground: #f1723b;
 
-    --muted: #AECACD;
+    --muted: #aecacd;
     --muted-foreground: #242424;
 
     --accent: #f7d052;
@@ -60,9 +60,9 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: #DFDCD4;
-    --input: #DFDCD4;
-    --ring: #DFDCD4;
+    --border: #dfdcd4;
+    --input: #dfdcd4;
+    --ring: #dfdcd4;
   }
 }
 
@@ -89,26 +89,26 @@ body {
   }
 
   .logo {
-    @apply text-2xl font-bold
+    @apply text-2xl font-bold;
   }
 
   .h1 {
-    @apply text-4xl lg:text-5xl font-bold leading-9 lg:leading-10
+    @apply text-4xl lg:text-5xl font-bold leading-9 lg:leading-10;
   }
 
   .h2 {
-    @apply text-2xl lg:text-3xl font-semibold leading-7 lg:leading-8
+    @apply text-2xl font-medium leading-7;
   }
 
   .h3 {
-    @apply text-xl lg:text-2xl font-medium
+    @apply text-xl lg:text-2xl font-medium;
   }
 
   .p1 {
-    @apply text-lg lg:text-xl
+    @apply text-lg font-thin;
   }
 
   .p2 {
-    @apply text-sm lg:text-base leading-none
+    @apply text-sm lg:text-base leading-none;
   }
 }

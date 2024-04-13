@@ -33,8 +33,9 @@ const config: Config = {
         vv: {
           black: "#242424",
           orange: "#F1723B",
-          darkGray: "#979797",
           lightGray: "#f4f4f4",
+          darkGray: "#979797",
+          bgGray: "#e4e4e4",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -88,6 +89,9 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      boxShadow: {
+        base: "0 0 24px 0 rgba(0, 0, 0, 0.1)",
       },
     },
   },

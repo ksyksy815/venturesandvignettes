@@ -97,9 +97,10 @@ const useFetchPostList = () => {
     {
       id: "128",
       author: "Seo",
-      title: "Backpacking Southeast Asia on a Shoestring",
+      title: "Story: Backpacking Southeast Asia on a Shoestring",
       slug: "budget-backpacking-sea",
-      summary: "Backpacking Southeast Asia on a Shoestring summary.",
+      summary:
+        "Backpacking Southeast Asia on a Shoestring summary. Backpacking Southeast Asia on a Shoestring summary.",
       content: "Backpacking Southeast Asia on a Shoestring content.",
       category: "Budget Backpacking",
       tags: ["BudgetTravel", "SoutheastAsia"],
