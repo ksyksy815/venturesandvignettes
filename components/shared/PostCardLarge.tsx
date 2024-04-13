@@ -48,7 +48,7 @@ const PostCardLarge = ({
         <div
           className={`w-full flex flex-col justify-between px-5 py-5 gap-y-7 border-black`}>
           <div className={`w-full flex flex-col gap-y-7`}>
-            <div className={`flex flex-col w-full gap-y-1`}>
+            <div className={`flex flex-col w-full gap-y-2`}>
               <p className={`text-base text-vv-darkGray`}>{category}</p>
               <h3
                 className={`h2 hover:text-vv-orange line-clamp-3 lg:h-[84px]`}>

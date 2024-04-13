@@ -93,7 +93,7 @@ body {
   }
 
   .h1 {
-    @apply text-4xl lg:text-5xl font-bold leading-9 lg:leading-10;
+    @apply text-4xl lg:text-5xl font-semibold leading-9 lg:leading-10;
   }
 
   .h2 {

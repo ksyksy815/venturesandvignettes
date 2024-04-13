@@ -36,8 +36,7 @@ const FeaturedSlider = () => {
         id="whatareyou"
         opts={{ align: "start" }}
         setApi={setApi}
-        className="w-full h-full"
-      >
+        className="w-full h-full">
         <CarouselContent className={`h-full w-full m-0`}>
           {data.map((item) => {
             const { title, description, image, id } = item;
@@ -56,10 +55,11 @@ const FeaturedSlider = () => {
                 />
 
                 <div
-                  className={`absolute bottom-0 flex flex-col mx-6 mb-[70px] pl-6 border-l border-white text-white gap-y-6 max-w-[826px] md:mx-8 md:pl-8`}
-                >
+                  className={`absolute bottom-0 flex flex-col mx-6 mb-[70px] pl-6 border-l border-white text-white gap-y-6 max-w-[826px] md:ml-8 md:mr-[120px] md:pl-8`}>
                   <h1 className={`h1`}>{title}</h1>
-                  <p className={`text-xl md:text-2xl`}>{description}</p>
+                  <p className={`text-xl md:text-2xl leading-snug`}>
+                    {description}
+                  </p>
                 </div>
 
                 <div className="absolute bottom-6 right-6 flex justify-center gap-2">
