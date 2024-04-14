@@ -1,6 +1,5 @@
+import MainEditor from "@/components/editor/MainEditor";
 import BasePage from "@/components/shared/BasePage";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const Page = () => {
   return (
@@ -8,7 +7,7 @@ const Page = () => {
       <div className="w-full flex flex-col gap-y-8">
         <div>tool bar</div>
         <input type="text" className="h-12 w-full px-4" />
-        <div>editor</div>
+        <MainEditor />
         <div>further meta info</div>
         <div>save button</div>
       </div>
