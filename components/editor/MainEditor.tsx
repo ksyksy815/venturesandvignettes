@@ -27,8 +27,9 @@ import YouTubeElement from "./YouTubeElement";
 import withEmbeds from "@/utils/withEmbeds";
 import WebsiteEmbed from "./WebsiteEmbed";
 
-type CustomText = {
+export type CustomText = {
   text: string;
+  bold?: boolean;
 };
 
 export type CustomElement = {

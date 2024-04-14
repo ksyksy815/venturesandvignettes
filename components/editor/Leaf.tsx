@@ -1,12 +1,17 @@
 import React from "react";
 import type { RenderLeafProps } from "slate-react";
 
-const Leaf = (props: RenderLeafProps) => {
+const Leaf = ({ leaf, attributes, children }: RenderLeafProps) => {
+  const { bold } = leaf;
+  const fontWeight = bold ? "bold" : "normal";
+
   return (
     <span
-      {...props.attributes}
-      style={{ fontWeight: props.leaf.bold ? "bold" : "normal" }}>
-      {props.children}
+      {...attributes}
+      style={{
+        fontWeight,
+      }}>
+      {children}
     </span>
   );
 };

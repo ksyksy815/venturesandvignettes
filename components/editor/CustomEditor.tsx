@@ -40,13 +40,13 @@ const CustomEditor = {
     CustomEditor.handleEmbed(editor, event.clipboardData.getData("text/plain"));
   },
   isBoldMarkActive(editor: EditorType) {
-    const marks = Editor.marks(editor);
+    const marks = Editor.marks(editor) as { bold?: boolean };
     return marks ? marks.bold === true : false;
   },
 
   isCodeBlockActive(editor: EditorType) {
     const [match] = Editor.nodes(editor, {
-      match: (n) => n.type === "code",
+      match: (n) => (n as Element).type === "code",
     });
 
     return !!match;
@@ -66,7 +66,7 @@ const CustomEditor = {
     const isActive = CustomEditor.isCodeBlockActive(editor);
     Transforms.setNodes(
       editor,
-      { type: isActive ? null : "code" },
+      { type: isActive ? "paragraph" : "code" },
       { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
     );
   },
