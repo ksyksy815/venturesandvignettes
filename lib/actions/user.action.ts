@@ -7,6 +7,7 @@ import { AddNewUserParams, UpdateUserParams } from "@/types/user.type";
 import { connectToDatabase } from "../database";
 import User from "../database/models/user.model";
 import { handleError } from "../utils";
+import { LOGIN_COOKIE } from "@/constants";
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 
@@ -31,7 +32,7 @@ export const getUserByEmailAndPassword = async (
       throw new Error("Invalid password. Please check your password.");
     }
 
-    return user;
+    return JSON.parse(JSON.stringify(user));
   } catch (error) {
     handleError(error);
   }
@@ -43,24 +44,28 @@ export const loginUser = async (email: string, password: string) => {
 
     const user = await getUserByEmailAndPassword(email, password);
 
-    if (user) {
-      const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
-        expiresIn: "1h",
-      });
-
-      // Set the token as a cookie
-      return {
-        headers: {
-          "Set-Cookie": cookie.serialize("auth", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV !== "development",
-            sameSite: "strict",
-            maxAge: 3600,
-            path: "/",
-          }),
-        },
-      };
+    if (!user) {
+      throw new Error(
+        "No user found with this email. Please check your email."
+      );
     }
+
+    const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    return {
+      headers: {
+        "Set-Cookie": cookie.serialize(LOGIN_COOKIE, token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV !== "development",
+          sameSite: "strict",
+          maxAge: 3600,
+          path: "/",
+        }),
+      },
+      user: JSON.parse(JSON.stringify(user)),
+    };
   } catch (error) {
     handleError(error);
   }
@@ -75,12 +80,13 @@ export const addNewUser = async (params: AddNewUserParams) => {
 
     const newUser = new User({
       ...params,
+      photo: params.photo || "",
       passwordHash,
     });
 
     const savedUser = await User.create(newUser);
 
-    return savedUser;
+    return JSON.parse(JSON.stringify(savedUser));
   } catch (error) {
     handleError(error);
   }
@@ -118,7 +124,19 @@ export const updateUserInfo = async (params: UpdateUserParams) => {
       { new: true }
     );
 
-    return updatedUser;
+    return JSON.parse(JSON.stringify(updatedUser));
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+export const checkMemberPassword = (password: string) => {
+  try {
+    if (password !== process.env.MEMBER_PASSWORD) {
+      return false;
+    }
+
+    return true;
   } catch (error) {
     handleError(error);
   }

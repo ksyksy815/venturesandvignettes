@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { CookiesProvider } from "react-cookie";
 import { RecoilRoot } from "recoil";
 
 const makeQueryClient = () => {
@@ -28,7 +31,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot>{children}</RecoilRoot>
+      <CookiesProvider>
+        <RecoilRoot>{children}</RecoilRoot>
+      </CookiesProvider>
     </QueryClientProvider>
   );
 };

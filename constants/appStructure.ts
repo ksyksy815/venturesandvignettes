@@ -26,7 +26,6 @@ export const MAIN_MENU = [
   },
 ];
 
-
 export const FOOTER_INFO = {
   about: {
     title: "About Us",
@@ -76,3 +75,26 @@ export const FOOTER_INFO = {
     ],
   },
 };
+
+export const ADMIN_NAV_ITEMS = [
+  {
+    name: "Dashboard",
+    path: "/admin",
+  },
+  {
+    name: "Posts",
+    path: "/admin/post",
+  },
+  {
+    name: "Comments",
+    path: "/admin/comment",
+  },
+  {
+    name: "Site Management",
+    path: "/admin/management",
+  },
+  {
+    name: "Users",
+    path: "/admin/user",
+  },
+];

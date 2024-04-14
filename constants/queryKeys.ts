@@ -1,3 +1,11 @@
-const queryKeys = {};
+const queryKeys = {
+  admin: {
+    memberPassword: "admin/memberPassword",
+  },
+  user: {
+    login: "user/login",
+    createUser: "user/new",
+  },
+};
 
 export default queryKeys;

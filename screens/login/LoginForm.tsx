@@ -2,12 +2,15 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import useLogin from "@/hooks/user/useLogin";
+import useLoginPage from "@/hooks/user/useLoginPage";
+import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const schema = z.object({
-  id: z.string().nonempty(),
-  password: z.string().min(8),
+  email: z.string().min(3),
+  password: z.string().min(6),
 });
 
 type LoginFormInputs = z.infer<typeof schema>;
@@ -18,21 +21,32 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInputs>();
+  const { loginUser } = useLoginPage();
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
+  const onSubmit = (data: LoginFormInputs) => {
+    loginUser(data.email, data.password);
+  };
 
   return (
-    <form onSubmit={onSubmit} className={`flex flex-col gap-y-6`}>
-      <div className={`flex flex-col`}>
-        <label htmlFor="id">ID</label>
-        <Input type="text" id="id" {...register("id")} />
-        {errors.id && <span>{errors.id.message}</span>}
-      </div>
-      <div className={`flex flex-col`}>
-        <label htmlFor="password">Password</label>
-        <Input type="password" id="password" {...register("password")} />
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={`flex flex-col gap-y-8 md:w-[30vw]`}>
+      <h1 className={`h1`}>Login</h1>
+      <div className={`flex flex-col gap-y-2`}>
+        <Input
+          type="text"
+          id="email"
+          {...register("email")}
+          placeholder="email"
+        />
+        {errors.email && <span>{errors.email.message}</span>}
+
+        <Input
+          type="password"
+          id="password"
+          {...register("password")}
+          placeholder="password"
+        />
         {errors.password && <span>{errors.password.message}</span>}
       </div>
       <Button type="submit">Submit</Button>

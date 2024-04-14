@@ -4,6 +4,7 @@ import Footer from "@/screens/main/Footer";
 import type { Metadata } from "next";
 import { Lora } from "next/font/google";
 import "./globals.css";
+import Providers from "./(root)/Providers";
 
 const lora = Lora({
   subsets: ["latin", "latin-ext"],
@@ -38,9 +39,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`relative flex items-center h-screen flex-col w-screen ${lora.className} bg-vv-bgGray `}>
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
