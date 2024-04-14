@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useCallback, useState } from "react";
 import {
   createEditor,
@@ -24,15 +23,19 @@ import Leaf from "./Leaf";
 import ToolBar from "./ToolBar";
 import CustomEditor from "./CustomEditor";
 import CustomImage from "./CustomImage";
+import YouTubeElement from "./YouTubeElement";
+import withEmbeds from "@/utils/withEmbeds";
+import WebsiteEmbed from "./WebsiteEmbed";
 
 type CustomText = {
   text: string;
 };
 
-type CustomElement = {
-  type: "code" | "paragraph" | "image";
+export type CustomElement = {
+  type: "code" | "paragraph" | "image" | "website" | "youtube";
   children: CustomText[];
   url?: string;
+  youtubeId?: string;
 };
 declare module "slate" {
   interface CustomTypes {
@@ -52,10 +55,15 @@ const initialValue: CustomElement[] = [
     children: [{ text: "" }],
     url: `https://source.unsplash.com/random/1200x800?sig=1`,
   },
+  {
+    type: "website",
+    url: "https://www.google.com",
+    children: [{ text: "" }],
+  },
 ];
 
 const MainEditor = () => {
-  const [editor] = useState(() => withReact(createEditor()));
+  const [editor] = useState(() => withEmbeds(withReact(createEditor())));
 
   const renderElement = useCallback((props: RenderElementProps) => {
     switch (props.element.type) {
@@ -63,6 +71,10 @@ const MainEditor = () => {
         return <CodeElement {...props} />;
       case "image":
         return <CustomImage {...props} />;
+      case "website":
+        return <WebsiteEmbed {...props} />;
+      case "youtube":
+        return <YouTubeElement {...props} />;
       default:
         return <DefaultElement {...props} />;
     }
@@ -111,6 +123,9 @@ const MainEditor = () => {
                 break;
               }
             }
+          }}
+          onPaste={(event) => {
+            CustomEditor.handlePaste(editor, event);
           }}
           renderElement={renderElement}
           renderLeaf={renderLeaf}
