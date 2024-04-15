@@ -1,31 +1,24 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import withEmbeds from "@/utils/withEmbeds";
+import { useCallback, useState } from "react";
+import { BaseEditor, createEditor } from "slate";
 import {
-  createEditor,
-  BaseEditor,
-  Descendant,
-  Editor,
-  Element,
-  Transforms,
-} from "slate";
-import {
-  Slate,
   Editable,
-  withReact,
   ReactEditor,
   RenderElementProps,
   RenderLeafProps,
+  Slate,
+  withReact,
 } from "slate-react";
-import DefaultElement from "./DefaultElement";
 import CodeElement from "./CodeElement";
-import Leaf from "./Leaf";
-import ToolBar from "./ToolBar";
 import CustomEditor from "./CustomEditor";
 import CustomImage from "./CustomImage";
-import YouTubeElement from "./YouTubeElement";
-import withEmbeds from "@/utils/withEmbeds";
+import DefaultElement from "./DefaultElement";
+import Leaf from "./Leaf";
+import ToolBar from "./ToolBar";
 import WebsiteEmbed from "./WebsiteEmbed";
+import YouTubeElement from "./YouTubeElement";
 
 export type CustomText = {
   text: string;
@@ -49,18 +42,18 @@ declare module "slate" {
 const initialValue: CustomElement[] = [
   {
     type: "paragraph",
-    children: [{ text: "A line of text in a paragraph." }],
-  },
-  {
-    type: "image",
-    children: [{ text: "" }],
-    url: `https://source.unsplash.com/random/1200x800?sig=1`,
-  },
-  {
-    type: "website",
-    url: "https://www.google.com",
     children: [{ text: "" }],
   },
+  // {
+  //   type: "image",
+  //   children: [{ text: "" }],
+  //   url: `https://source.unsplash.com/random/1200x800?sig=1`,
+  // },
+  // {
+  //   type: "website",
+  //   url: "https://www.google.com",
+  //   children: [{ text: "" }],
+  // },
 ];
 
 const MainEditor = () => {
@@ -99,10 +92,11 @@ const MainEditor = () => {
             const content = JSON.stringify(value);
             localStorage.setItem("content", content);
           }
-        }}>
+        }}
+      >
         <ToolBar editor={editor} />
         <Editable
-          className={`px-8 py-8 bg-white focus:outline-none`}
+          className={`min-h-[70vh] px-4 py-4 lg:px-8 lg:py-8 bg-white focus:outline-none rounded-[32px]`}
           onChange={(value) => {
             console.log("onChange", value);
           }}
