@@ -83,11 +83,11 @@ export const ADMIN_NAV_ITEMS = [
   },
   {
     name: "Posts",
-    path: "/admin/post",
+    path: "/admin/posts",
   },
   {
     name: "Comments",
-    path: "/admin/comment",
+    path: "/admin/comments",
   },
   {
     name: "Site Management",
