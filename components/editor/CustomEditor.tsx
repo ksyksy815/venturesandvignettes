@@ -66,6 +66,54 @@ const CustomEditor = {
     return !!match;
   },
 
+  isLinkBlockActive(editor: EditorType) {
+    const [match] = Editor.nodes(editor, {
+      match: (n) => (n as Element).type === "link",
+    });
+
+    return !!match;
+  },
+
+  isListBlockActive(editor: EditorType) {
+    const [match] = Editor.nodes(editor, {
+      match: (n) => (n as Element).type === "list",
+    });
+
+    return !!match;
+  },
+
+  isHeaderOneBlockActive(editor: EditorType) {
+    const [match] = Editor.nodes(editor, {
+      match: (n) => (n as Element).type === "headerOne",
+    });
+
+    return !!match;
+  },
+
+  isHeaderTwoBlockActive(editor: EditorType) {
+    const [match] = Editor.nodes(editor, {
+      match: (n) => (n as Element).type === "headerTwo",
+    });
+
+    return !!match;
+  },
+
+  isHeaderThreeBlockActive(editor: EditorType) {
+    const [match] = Editor.nodes(editor, {
+      match: (n) => (n as Element).type === "headerThree",
+    });
+
+    return !!match;
+  },
+
+  isImageBlockActive(editor: EditorType) {
+    const [match] = Editor.nodes(editor, {
+      match: (n) => (n as Element).type === "image",
+    });
+
+    return !!match;
+  },
+
   toggleBoldMark(editor: EditorType) {
     const isActive = CustomEditor.isBoldMarkActive(editor);
 
@@ -104,6 +152,75 @@ const CustomEditor = {
     } else {
       Editor.addMark(editor, "lineThrough", true);
     }
+  },
+
+  /* Transforming elements */
+  toggleLinkBlock(editor: EditorType) {
+    const isActive = CustomEditor.isLinkBlockActive(editor);
+    Transforms.setNodes(
+      editor,
+      { type: isActive ? "paragraph" : "link" },
+      { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
+    );
+  },
+
+  toggleListBlock(editor: EditorType) {
+    const isActive = CustomEditor.isListBlockActive(editor);
+    Transforms.setNodes(
+      editor,
+      { type: isActive ? "paragraph" : "list" },
+      { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
+    );
+  },
+
+  toggleHeaderOneBlock(editor: EditorType) {
+    const isActive = CustomEditor.isHeaderOneBlockActive(editor);
+    Transforms.setNodes(
+      editor,
+      { type: isActive ? "paragraph" : "headerOne" },
+      { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
+    );
+  },
+
+  toggleHeaderTwoBlock(editor: EditorType) {
+    const isActive = CustomEditor.isHeaderTwoBlockActive(editor);
+    Transforms.setNodes(
+      editor,
+      { type: isActive ? "paragraph" : "headerTwo" },
+      { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
+    );
+  },
+
+  toggleHeaderThreeBlock(editor: EditorType) {
+    const isActive = CustomEditor.isHeaderThreeBlockActive(editor);
+    Transforms.setNodes(
+      editor,
+      { type: isActive ? "paragraph" : "headerThree" },
+      { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
+    );
+  },
+
+  toggleImageBlock(editor: EditorType, url: string) {
+    const imageBlock = {
+      type: "image" as "image",
+      url,
+      children: [{ text: "" }],
+    };
+
+    // if (editor.selection) {
+    //   const path = editor.selection.focus.path;
+    //   const parentPath = path.slice(0, -1);
+    //   const index = path[path.length - 1];
+
+    //   Transforms.insertNodes(editor, imageBlock, {
+    //     at: [...parentPath, index + 1],
+    //   });
+    // } else {
+    //TODO: 일단 난 바보라 노드 맨 뒤에 넣는거만 가능함
+    Transforms.insertNodes(editor, imageBlock, {
+      at: [editor.children.length],
+    });
+    // }
   },
 
   toggleCodeBlock(editor: EditorType) {

@@ -33,6 +33,7 @@ const config: Config = {
         vv: {
           black: "#242424",
           orange: "#F1723B",
+          blue: "#1A93A7",
           lightGray: "#f4f4f4",
           darkGray: "#979797",
           bgGray: "#e4e4e4",

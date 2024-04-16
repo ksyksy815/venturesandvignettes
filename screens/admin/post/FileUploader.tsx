@@ -31,7 +31,7 @@ const FileUploader = ({
   return (
     <div
       {...getRootProps()}
-      className="flex-center bg-gray-200 flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50"
+      className="w-full flex-center border border-dashed border-black/15 bg-white flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50"
     >
       <input {...getInputProps()} className="cursor-pointer" />
       {imageUrl ? (
@@ -50,7 +50,7 @@ const FileUploader = ({
           <h3 className="mb-2 mt-2">Drag photo here</h3>
           <p className="p-medium-12 mb-4">SVG, PNG, JPG</p>
           <Button type="button" className="rounded-full">
-            Select from computer
+            Select from your device!
           </Button>
         </div>
       )}

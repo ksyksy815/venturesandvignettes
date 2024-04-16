@@ -14,9 +14,14 @@ import CodeElement from "./CodeElement";
 import CustomEditor from "./CustomEditor";
 import CustomImage from "./CustomImage";
 import DefaultElement from "./DefaultElement";
+import HeaderOneElement from "./HeaderOneElement";
+import HeaderThreeElement from "./HeaderThreeElement";
+import HeaderTwoElement from "./HeaderTwoElement";
 import Leaf from "./Leaf";
-import ToolBar from "./ToolBar";
+import LinkElement from "./LinkElement";
+import ListElement from "./ListElement";
 import YouTubeElement from "./YouTubeElement";
+import ToolBar from "./toolBar/ToolBar";
 
 declare module "slate" {
   interface CustomTypes {
@@ -54,6 +59,16 @@ const MainEditor = ({ editor }: Props) => {
         return <CodeElement {...props} />;
       case "image":
         return <CustomImage {...props} />;
+      case "link":
+        return <LinkElement {...props} />;
+      case "list":
+        return <ListElement {...props} />;
+      case "headerOne":
+        return <HeaderOneElement {...props} />;
+      case "headerTwo":
+        return <HeaderTwoElement {...props} />;
+      case "headerThree":
+        return <HeaderThreeElement {...props} />;
       case "youtube":
         return <YouTubeElement {...props} />;
       default:
@@ -117,6 +132,11 @@ const MainEditor = ({ editor }: Props) => {
               case "x": {
                 event.preventDefault();
                 CustomEditor.toggleLineThroughMark(editor);
+                break;
+              }
+              case "k": {
+                event.preventDefault();
+                CustomEditor.toggleLinkBlock(editor);
                 break;
               }
             }

@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import { ImageElementType } from "@/types/edidor.type";
 import type { RenderElementProps } from "slate-react";
 
-const CustomImage = (props: RenderElementProps) => {
-  return <img {...props.attributes} src={props.element.url} alt={"image"} />;
+const CustomImage = ({ attributes, element }: RenderElementProps) => {
+  const { url } = element as ImageElementType;
+
+  return <img {...attributes} src={url} alt={"image"} />;
 };
 
 export default CustomImage;

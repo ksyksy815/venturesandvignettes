@@ -6,27 +6,54 @@ export type CustomText = {
   lineThrough?: boolean;
 };
 
-export type CodeElement = {
-  type: "code";
-  children: CustomText[];
-};
-export type ParagraphElement = {
+
+export type ParagraphElementType = {
   type: "paragraph";
   children: CustomText[];
 };
-export type ImageElement = {
+export type ImageElementType = {
   type: "image";
   url: string;
   children: CustomText[];
 };
-export type YouTubeElement = {
+export type LinkElementType = {
+  type: "link";
+  url: string;
+  children: CustomText[];
+};
+export type ListElementType = {
+  type: "list";
+  children: CustomText[];
+};
+export type HeaderOneElementType = {
+  type: "headerOne";
+  children: CustomText[];
+};
+export type HeaderTwoElementType = {
+  type: "headerTwo";
+  children: CustomText[];
+};
+export type HeaderThreeElementType = {
+  type: "headerThree";
+  children: CustomText[];
+};
+export type CodeElementType = {
+  type: "code";
+  children: CustomText[];
+};
+export type YouTubeElementType = {
   type: "youtube";
   youtubeId: string;
   children: CustomText[];
 };
 
 export type CustomElement =
-  | ParagraphElement
-  | ImageElement
-  | YouTubeElement
-  | CodeElement;
+  | ParagraphElementType
+  | ImageElementType
+  | LinkElementType
+  | ListElementType
+  | HeaderOneElementType
+  | HeaderTwoElementType
+  | HeaderThreeElementType
+  | YouTubeElementType
+  | CodeElementType;
