@@ -12,6 +12,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { POST_DEFAULT_VALUES } from "@/constants";
+import useMainEditor from "@/hooks/editor/useMainEditor";
+import { CustomElement } from "@/types/edidor.type";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -26,30 +28,32 @@ const schema = z.object({
   category: z.string().min(3, { message: "Category is required." }),
   tags: z.string(),
   image: z.string(),
-  thumbnailImage: z
-    .string()
-    .min(3, { message: "Thumbnail image is required." }),
+  thumbnailImage: z.string(),
 });
 
 type FormData = z.infer<typeof schema>;
 
 type Props = {
   type: "CREATE" | "UPDATE";
-  post?: any;
+  post?: CustomElement[];
+  metaInfo?: any;
 };
 
-const PostForm = ({ type, post }: Props) => {
+const PostForm = ({ type, post, metaInfo }: Props) => {
+  const { editor, initialValue } = useMainEditor({ post });
   const [files, setFiles] = useState<File[]>([]);
-
-  const initialValues = post && type === "UPDATE" ? post : POST_DEFAULT_VALUES;
 
   const form = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: initialValues,
+    defaultValues: type === "UPDATE" ? metaInfo : POST_DEFAULT_VALUES,
   });
 
   const onSubmit = (data: any) => {
+    // TODO: data = 메인 컨텐츠를 제외한 데이터
     console.log(data);
+
+    // TODO: 메인컨텐츠 내용
+    console.log("메인 컨텐츠 내용: ", editor.children);
   };
 
   return (
@@ -58,24 +62,26 @@ const PostForm = ({ type, post }: Props) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className={`flex flex-col gap-y-8`}
       >
-        <FormField
-          control={form.control}
-          name="title"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="Title"
-                  {...field}
-                  className={`h-12 w-full px-4 text-2xl font-medium bg-transparent focus:outline-none placeholder:font-normal`}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className={`w-full flex flex-col`}>
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    placeholder="Title"
+                    {...field}
+                    className={`h-12 w-full text-2xl px-0 font-medium bg-transparent rounded-none focus:outline-none placeholder:font-normal border-b border-black/15`}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <MainEditor />
+          <MainEditor editor={editor} />
+        </div>
 
         <section className={`w-full flex flex-col gap-y-8`}>
           <h2 className={`h2 border-b border-black/15 py-3`}>
@@ -166,71 +172,7 @@ const PostForm = ({ type, post }: Props) => {
               )}
             />
           </div>
-
-          <div className={`w-full flex flex-col gap-y-2`}>
-            <h3 className={`text-xl font-medium`}>Thumbnail Image</h3>
-            <p
-              className={`text-sm text-vv-darkGray`}
-            >{`The preferred size of the thumbnail image is 640x360. (16:9)`}</p>
-            <FormField
-              control={form.control}
-              name={"image"}
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <FileUploader
-                      onFieldChange={field.onChange}
-                      imageUrl={field.value}
-                      setFiles={setFiles}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-          </div>
         </section>
-
-        {/* <div className={`flex flex-col gap-y-2`}>
-          <label htmlFor="slug" className={`ml-4`}>
-            Slug:
-          </label>
-          <Input
-            type="text"
-            id="slug"
-            {...register("slug")}
-            placeholder={"Please write slug"}
-          />
-          {errors.slug && <span>{errors.slug.message}</span>}
-        </div>
-        <div className={`flex flex-col gap-y-2`}>
-          <label htmlFor="summary" className={`ml-4`}>
-            Summary:
-          </label>
-          <Input
-            type="text"
-            id="summary"
-            {...register("summary")}
-            placeholder={"Please write summary"}
-          />
-          {errors.summary && <span>{errors.summary.message}</span>}
-        </div>
-        <div className={`flex flex-col gap-y-2`}>
-          <label htmlFor="category" className={`ml-4`}>
-            Category:
-          </label>
-          <select
-            id="category"
-            {...register("category")}
-            className={`rounded-[32px] bg-white px-4 py-2`}
-          >
-            {data.map((category) => (
-              <option key={category._id} value={category._id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-          {errors.category && <span>{errors.category.message}</span>}
-        </div> */}
 
         <Button
           type="submit"

@@ -1,15 +1,14 @@
 "use client";
 
-import withEmbeds from "@/utils/withEmbeds";
-import { useCallback, useState } from "react";
-import { BaseEditor, createEditor } from "slate";
+import { CustomElement, CustomText } from "@/types/edidor.type";
+import { useCallback } from "react";
+import { BaseEditor, Editor } from "slate";
 import {
   Editable,
   ReactEditor,
   RenderElementProps,
   RenderLeafProps,
   Slate,
-  withReact,
 } from "slate-react";
 import CodeElement from "./CodeElement";
 import CustomEditor from "./CustomEditor";
@@ -17,20 +16,8 @@ import CustomImage from "./CustomImage";
 import DefaultElement from "./DefaultElement";
 import Leaf from "./Leaf";
 import ToolBar from "./ToolBar";
-import WebsiteEmbed from "./WebsiteEmbed";
 import YouTubeElement from "./YouTubeElement";
 
-export type CustomText = {
-  text: string;
-  bold?: boolean;
-};
-
-export type CustomElement = {
-  type: "code" | "paragraph" | "image" | "website" | "youtube";
-  children: CustomText[];
-  url?: string;
-  youtubeId?: string;
-};
 declare module "slate" {
   interface CustomTypes {
     Editor: BaseEditor & ReactEditor;
@@ -56,17 +43,17 @@ const initialValue: CustomElement[] = [
   // },
 ];
 
-const MainEditor = () => {
-  const [editor] = useState(() => withEmbeds(withReact(createEditor())));
+type Props = {
+  editor: Editor;
+};
 
+const MainEditor = ({ editor }: Props) => {
   const renderElement = useCallback((props: RenderElementProps) => {
     switch (props.element.type) {
       case "code":
         return <CodeElement {...props} />;
       case "image":
         return <CustomImage {...props} />;
-      case "website":
-        return <WebsiteEmbed {...props} />;
       case "youtube":
         return <YouTubeElement {...props} />;
       default:
@@ -96,7 +83,7 @@ const MainEditor = () => {
       >
         <ToolBar editor={editor} />
         <Editable
-          className={`min-h-[70vh] px-4 py-4 lg:px-8 lg:py-8 bg-white focus:outline-none rounded-[32px]`}
+          className={`min-h-[70vh] px-4 py-4 lg:px-8 lg:py-8 bg-white focus:outline-none`}
           onChange={(value) => {
             console.log("onChange", value);
           }}
@@ -114,7 +101,22 @@ const MainEditor = () => {
               }
               case "b": {
                 event.preventDefault();
-                CustomEditor.toggleCodeBlock(editor);
+                CustomEditor.toggleBoldMark(editor);
+                break;
+              }
+              case "i": {
+                event.preventDefault();
+                CustomEditor.toggleItalicMark(editor);
+                break;
+              }
+              case "u": {
+                event.preventDefault();
+                CustomEditor.toggleUnderlineMark(editor);
+                break;
+              }
+              case "x": {
+                event.preventDefault();
+                CustomEditor.toggleLineThroughMark(editor);
                 break;
               }
             }

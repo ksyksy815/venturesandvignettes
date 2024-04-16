@@ -1,6 +1,5 @@
+import { Editor, Editor as EditorType, Element, Transforms } from "slate";
 import { CustomElement } from "./MainEditor";
-import { Editor, Element, Transforms } from "slate";
-import { Editor as EditorType } from "slate";
 
 const embedRegex = [
   {
@@ -44,6 +43,21 @@ const CustomEditor = {
     return marks ? marks.bold === true : false;
   },
 
+  isItalicMarkActive(editor: EditorType) {
+    const marks = Editor.marks(editor) as { italic?: boolean };
+    return marks ? marks.italic === true : false;
+  },
+
+  isUnderlineMarkActive(editor: EditorType) {
+    const marks = Editor.marks(editor) as { underline?: boolean };
+    return marks ? marks.underline === true : false;
+  },
+
+  isLineThroughMarkActive(editor: EditorType) {
+    const marks = Editor.marks(editor) as { lineThrough?: boolean };
+    return marks ? marks.lineThrough === true : false;
+  },
+
   isCodeBlockActive(editor: EditorType) {
     const [match] = Editor.nodes(editor, {
       match: (n) => (n as Element).type === "code",
@@ -59,6 +73,36 @@ const CustomEditor = {
       Editor.removeMark(editor, "bold");
     } else {
       Editor.addMark(editor, "bold", true);
+    }
+  },
+
+  toggleItalicMark(editor: EditorType) {
+    const isActive = CustomEditor.isItalicMarkActive(editor);
+
+    if (isActive) {
+      Editor.removeMark(editor, "italic");
+    } else {
+      Editor.addMark(editor, "italic", true);
+    }
+  },
+
+  toggleUnderlineMark(editor: EditorType) {
+    const isActive = CustomEditor.isUnderlineMarkActive(editor);
+
+    if (isActive) {
+      Editor.removeMark(editor, "underline");
+    } else {
+      Editor.addMark(editor, "underline", true);
+    }
+  },
+
+  toggleLineThroughMark(editor: EditorType) {
+    const isActive = CustomEditor.isLineThroughMarkActive(editor);
+
+    if (isActive) {
+      Editor.removeMark(editor, "lineThrough");
+    } else {
+      Editor.addMark(editor, "lineThrough", true);
     }
   },
 
