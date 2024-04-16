@@ -1,19 +1,22 @@
-import React from "react";
-import { type RenderElementProps } from "slate-react";
+import { YouTubeElementType } from "@/types/edidor.type";
 import YouTubeEmbed from "react-youtube";
+import { type RenderElementProps } from "slate-react";
 
 const YouTubeElement = ({
   attributes,
   children,
   element,
 }: RenderElementProps) => {
-  return (
+  const { youtubeId } = element as YouTubeElementType;
+  return youtubeId ? (
     <div {...attributes}>
       <div contentEditable={false}>
-        <YouTubeEmbed videoId={element.youtubeId || ""} />
+        <YouTubeEmbed videoId={youtubeId || ""} />
         {children}
       </div>
     </div>
+  ) : (
+    <p>{children}</p>
   );
 };
 

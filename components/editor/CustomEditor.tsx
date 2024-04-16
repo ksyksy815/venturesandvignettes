@@ -1,5 +1,5 @@
+import { CustomElement } from "@/types/edidor.type";
 import { Editor, Editor as EditorType, Element, Transforms } from "slate";
-import { CustomElement } from "./MainEditor";
 
 const embedRegex = [
   {
