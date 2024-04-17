@@ -1,3 +1,5 @@
+import { list } from "postcss";
+
 const queryKeys = {
   admin: {
     memberPassword: "admin/memberPassword",
@@ -5,6 +7,7 @@ const queryKeys = {
   user: {
     login: "user/login",
     createUser: "user/new",
+    list: "user/list",
   },
 };
 

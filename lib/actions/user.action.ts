@@ -38,6 +38,18 @@ export const getUserByEmailAndPassword = async (
   }
 };
 
+export const getAllUsers = async () => {
+  try {
+    await connectToDatabase();
+    console.log("getAllUsers");
+    const users = await User.find();
+
+    return JSON.parse(JSON.stringify(users));
+  } catch (error) {
+    handleError(error);
+  }
+};
+
 export const loginUser = async (email: string, password: string) => {
   try {
     await connectToDatabase();
