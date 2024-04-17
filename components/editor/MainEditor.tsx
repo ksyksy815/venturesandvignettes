@@ -31,28 +31,12 @@ declare module "slate" {
   }
 }
 
-const initialValue: CustomElement[] = [
-  {
-    type: "paragraph",
-    children: [{ text: "" }],
-  },
-  // {
-  //   type: "image",
-  //   children: [{ text: "" }],
-  //   url: `https://source.unsplash.com/random/1200x800?sig=1`,
-  // },
-  // {
-  //   type: "website",
-  //   url: "https://www.google.com",
-  //   children: [{ text: "" }],
-  // },
-];
-
 type Props = {
   editor: Editor;
+  initialValue: CustomElement[];
 };
 
-const MainEditor = ({ editor }: Props) => {
+const MainEditor = ({ editor, initialValue }: Props) => {
   const renderElement = useCallback((props: RenderElementProps) => {
     switch (props.element.type) {
       case "code":

@@ -9,7 +9,7 @@ export type CreateBlogPostParams = {
     tags: string[];
     isDisplayed: boolean;
     image: string;
-    thumbnailImage: string;
+    thumbnailImage?: string;
   };
   path: string;
 };

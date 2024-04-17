@@ -11,3 +11,13 @@ export const handleError = (error: unknown) => {
 };
 
 export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
+
+export const convertUrlToFile = async (
+  url: string,
+  filename: string
+): Promise<File> => {
+  const response = await fetch(url);
+  const blob = await response.blob();
+
+  return new File([blob], filename);
+};
