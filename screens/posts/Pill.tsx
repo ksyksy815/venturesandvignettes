@@ -13,11 +13,11 @@ const Pill = ({
 }: Props) => {
   return (
     <div
-      className={` px-6 py-1 border rounded-full text-lg lg:text-[20px] leading-4 lg:leading-6 grind place-content-center font-medium ${
+      className={` px-6 py-1 rounded-full text-lg leading-4 lg:leading-6 grind place-content-center font-medium ${
         currentCategory.toLocaleLowerCase() === text.toLocaleLowerCase()
           ? "bg-vv-black text-white select-none"
-          : "border-vv-black text-vv-black cursor-pointer hover:bg-vv-orange"
-      }`}
+          : "text-vv-black bg-white cursor-pointer hover:bg-vv-orange hover:text-white"
+      } shadow-sm`}
       onClick={() => {
         if (currentCategory !== text) onClick();
       }}

@@ -1,5 +1,6 @@
 "use server";
 
+import { Tag as TagType } from "@/types/tag.type";
 import { connectToDatabase } from "../database";
 import { Tag } from "../database/models/tag.model";
 import { handleError } from "../utils";
@@ -10,7 +11,7 @@ export const getAllTags = async () => {
 
     const tags = await Tag.find();
 
-    return tags.map((tag) => JSON.parse(JSON.stringify(tag)));
+    return tags.map((tag) => JSON.parse(JSON.stringify(tag))) as TagType[];
   } catch (error) {
     handleError(error);
   }
@@ -23,6 +24,7 @@ export const createTags = async (names: string[]) => {
     const newTags = await Tag.insertMany(names.map((name) => ({ name })));
 
     return newTags.map((tag) => JSON.parse(JSON.stringify(tag)));
+      
   } catch (error) {
     handleError(error);
   }
