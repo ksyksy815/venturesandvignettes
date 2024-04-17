@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/select";
 
 import useFetchCategoryList from "@/hooks/category/useFetchCategoryList";
+import { Category } from "@/types/category.type";
 
 type DropDownProps = {
   onChangeHandler: (value: string) => void;
@@ -25,7 +26,7 @@ const DropDown = ({ onChangeHandler, value }: DropDownProps) => {
       </SelectTrigger>
       <SelectContent>
         {categories.length > 0 &&
-          categories.map((category) => (
+          categories.map((category: Category) => (
             <SelectItem
               key={category._id}
               value={category._id}

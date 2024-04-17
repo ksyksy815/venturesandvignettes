@@ -1,6 +1,7 @@
 "use client";
 
 import useFetchCategoryList from "@/hooks/category/useFetchCategoryList";
+import { Category } from "@/types/category.type";
 import Pill from "./Pill";
 
 type Props = {
@@ -19,7 +20,7 @@ const Categories = ({ currentCategory, updateCategoryName }: Props) => {
         onClick={() => updateCategoryName("ALL")}
         currentCategory={currentCategory}
       />
-      {data?.map((category) => (
+      {data?.map((category: Category) => (
         <Pill
           key={category.name}
           text={category.name}
