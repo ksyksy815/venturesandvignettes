@@ -4,7 +4,7 @@ import {
   deleteCategory,
   updateCategory,
 } from "@/lib/actions/category.action";
-import userClient from "@/lib/services/user.service";
+import userClient from "@/lib/services/category.service";
 import {
   CreateCategoryParams,
   DeleteCategoryParams,
