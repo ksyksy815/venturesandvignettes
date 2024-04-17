@@ -166,6 +166,7 @@ const PostForm = ({ type, post, metaInfo }: Props) => {
                       onFieldChange={field.onChange}
                       imageUrl={field.value}
                       setFiles={setFiles}
+                      height={539}
                     />
                   </FormControl>
                 </FormItem>
@@ -174,11 +175,7 @@ const PostForm = ({ type, post, metaInfo }: Props) => {
           </div>
         </section>
 
-        <Button
-          type="submit"
-          variant={"orange"}
-          disabled={form.formState.isSubmitting}
-        >
+        <Button type="submit" disabled={form.formState.isSubmitting}>
           Submit
         </Button>
       </form>

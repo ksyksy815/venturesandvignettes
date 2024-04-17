@@ -71,9 +71,7 @@ const MetaInfoForm = () => {
         {errors.category && <span>{errors.category.message}</span>}
       </div>
 
-      <Button type="submit" variant={"orange"}>
-        Submit
-      </Button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 };

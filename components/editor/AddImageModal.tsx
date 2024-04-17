@@ -74,7 +74,7 @@ const AddImageModal = ({ editor, isOpen, closeModal }: Props) => {
                   setFiles={setFiles}
                 />
 
-                <Button type="button" variant={"orange"} onClick={handleUpload}>
+                <Button type="button" onClick={handleUpload}>
                   Upload
                 </Button>
               </Dialog.Panel>

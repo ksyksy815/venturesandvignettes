@@ -11,12 +11,14 @@ type FileUploaderProps = {
   onFieldChange: (value: string) => void;
   imageUrl: string;
   setFiles: Dispatch<SetStateAction<File[]>>;
+  height?: number;
 };
 
 const FileUploader = ({
   onFieldChange,
   imageUrl,
   setFiles,
+  height,
 }: FileUploaderProps) => {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setFiles(acceptedFiles);
@@ -31,7 +33,9 @@ const FileUploader = ({
   return (
     <div
       {...getRootProps()}
-      className="w-full flex-center border border-dashed border-black/15 bg-white flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50"
+      className={`${
+        height ? `h-[${height}px] ` : ""
+      }w-full flex-center border border-dashed border-black/15 bg-white flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50`}
     >
       <input {...getInputProps()} className="cursor-pointer" />
       {imageUrl ? (
@@ -40,12 +44,16 @@ const FileUploader = ({
             src={imageUrl}
             alt="image"
             width={250}
-            height={250}
+            height={height ? height : 250}
             className="w-full object-cover object-center"
           />
         </div>
       ) : (
-        <div className="flex-center flex-col py-5 text-grey-500">
+        <div
+          className={`${
+            height ? `h-[${height}px] ` : ""
+          }flex-center flex-col py-5 text-grey-500`}
+        >
           <FiImage size={40} />
           <h3 className="mb-2 mt-2">Drag photo here</h3>
           <p className="p-medium-12 mb-4">SVG, PNG, JPG</p>
