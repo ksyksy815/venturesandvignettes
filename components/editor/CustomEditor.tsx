@@ -1,4 +1,4 @@
-import { CustomElement } from "@/types/edidor.type";
+import { CustomElement, ParagraphElementType } from "@/types/edidor.type";
 import { Editor, Editor as EditorType, Element, Transforms } from "slate";
 
 const embedRegex = [
@@ -66,6 +66,14 @@ const CustomEditor = {
     return !!match;
   },
 
+  isQuoteBlockActive(editor: EditorType) {
+    const [match] = Editor.nodes(editor, {
+      match: (n) => (n as Element).type === "quote",
+    });
+
+    return !!match;
+  },
+
   isLinkBlockActive(editor: EditorType) {
     const [match] = Editor.nodes(editor, {
       match: (n) => (n as Element).type === "link",
@@ -114,6 +122,7 @@ const CustomEditor = {
     return !!match;
   },
 
+  /* Styles */
   toggleBoldMark(editor: EditorType) {
     const isActive = CustomEditor.isBoldMarkActive(editor);
 
@@ -154,7 +163,7 @@ const CustomEditor = {
     }
   },
 
-  /* Transforming elements */
+  /* Blocks */
   toggleLinkBlock(editor: EditorType) {
     const isActive = CustomEditor.isLinkBlockActive(editor);
     Transforms.setNodes(
@@ -230,6 +239,22 @@ const CustomEditor = {
       { type: isActive ? "paragraph" : "code" },
       { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
     );
+  },
+
+  toggleQuoteBlock(editor: EditorType) {
+    const isActive = CustomEditor.isQuoteBlockActive(editor);
+    Transforms.setNodes(
+      editor,
+      { type: isActive ? "paragraph" : "quote" },
+      { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
+    );
+  },
+
+  addEmptySection(editor: EditorType) {
+    const paragraph = { type: "paragraph", children: [{ text: "" }] };
+    Transforms.insertNodes(editor, paragraph as ParagraphElementType, {
+      at: editor.children.length,
+    });
   },
 };
 

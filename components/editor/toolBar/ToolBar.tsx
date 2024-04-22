@@ -7,9 +7,10 @@ import {
   FiLink,
   FiList,
   FiSave,
+  FiSquare,
   FiUnderline,
 } from "react-icons/fi";
-import { LuHeading1, LuHeading2, LuHeading3 } from "react-icons/lu";
+import { LuHeading1, LuHeading2, LuHeading3, LuQuote } from "react-icons/lu";
 import { RxStrikethrough } from "react-icons/rx";
 import { Editor } from "slate";
 import CustomEditor from "../CustomEditor";
@@ -125,10 +126,30 @@ const ToolBar = ({ editor }: { editor: Editor }) => {
           className={`h-[30px] w-[30px] grid place-content-center`}
           onMouseDown={(event) => {
             event.preventDefault();
+            CustomEditor.toggleQuoteBlock(editor);
+          }}
+        >
+          <LuQuote size={22} />
+        </button>
+        <button
+          type={"button"}
+          className={`h-[30px] w-[30px] grid place-content-center`}
+          onMouseDown={(event) => {
+            event.preventDefault();
             console.log(editor.children);
           }}
         >
           <FiSave size={22} />
+        </button>
+        <button
+          type={"button"}
+          className={`h-[30px] w-[30px] grid place-content-center`}
+          onMouseDown={(event) => {
+            event.preventDefault();
+            // TODO: addSection
+          }}
+        >
+          <FiSquare size={22} />
         </button>
       </div>
     </>

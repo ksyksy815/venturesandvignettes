@@ -41,6 +41,10 @@ export type CodeElementType = {
   type: "code";
   children: CustomText[];
 };
+export type QuotelementType = {
+  type: "quote";
+  children: CustomText[];
+};
 export type YouTubeElementType = {
   type: "youtube";
   youtubeId: string;
@@ -55,5 +59,6 @@ export type CustomElement =
   | HeaderOneElementType
   | HeaderTwoElementType
   | HeaderThreeElementType
+  | QuotelementType
   | YouTubeElementType
   | CodeElementType;

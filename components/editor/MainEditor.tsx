@@ -20,6 +20,7 @@ import HeaderTwoElement from "./HeaderTwoElement";
 import Leaf from "./Leaf";
 import LinkElement from "./LinkElement";
 import ListElement from "./ListElement";
+import QuoteElement from "./QuoteElement";
 import YouTubeElement from "./YouTubeElement";
 import ToolBar from "./toolBar/ToolBar";
 
@@ -41,6 +42,8 @@ const MainEditor = ({ editor, initialValue }: Props) => {
     switch (props.element.type) {
       case "code":
         return <CodeElement {...props} />;
+      case "quote":
+        return <QuoteElement {...props} />;
       case "image":
         return <CustomImage {...props} />;
       case "link":
