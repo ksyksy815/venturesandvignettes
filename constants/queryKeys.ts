@@ -15,6 +15,9 @@ const queryKeys = {
     update: "category/update",
     delete: "category/delete",
   },
+  post: {
+    list: "post/list",
+  },
 };
 
 export default queryKeys;

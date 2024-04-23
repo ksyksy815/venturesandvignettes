@@ -41,13 +41,21 @@ export type CodeElementType = {
   type: "code";
   children: CustomText[];
 };
-export type QuotelementType = {
+export type QuoteElementType = {
   type: "quote";
   children: CustomText[];
 };
 export type YouTubeElementType = {
   type: "youtube";
   youtubeId: string;
+  children: CustomText[];
+};
+export type SectionElementType = {
+  type: "section";
+  children: CustomText[];
+};
+export type AlignedElementType = {
+  type: "aligned-left" | "aligned-center" | "aligned-right";
   children: CustomText[];
 };
 
@@ -59,6 +67,8 @@ export type CustomElement =
   | HeaderOneElementType
   | HeaderTwoElementType
   | HeaderThreeElementType
-  | QuotelementType
+  | QuoteElementType
   | YouTubeElementType
-  | CodeElementType;
+  | CodeElementType
+  | SectionElementType
+  | AlignedElementType;

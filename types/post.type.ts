@@ -48,7 +48,7 @@ export type DeleteBlogPostParams = {
 
 export type BlogPost = {
   _id: string;
-  author: { _id: string; firstName: string; lastName: string };
+  author: { _id: string; userName: string };
   title: string;
   slug: string; // ex) this-is-a-blog-post
   summary: string;

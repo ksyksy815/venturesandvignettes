@@ -13,8 +13,6 @@ const Leaf = ({ leaf, attributes, children }: RenderLeafProps) => {
     return "none";
   };
 
-  console.log(children.props.parent.type);
-
   return (
     <span
       {...attributes}

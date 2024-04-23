@@ -1,9 +1,9 @@
-class UserClient {
+class CategoryClient {
   getUserList = async () => {
     return await fetch("/api/v1/categories").then((res) => res.json());
   };
 }
 
-const userClient = new UserClient();
+const categoryClient = new CategoryClient();
 
-export default userClient;
+export default categoryClient;

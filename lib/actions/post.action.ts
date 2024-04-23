@@ -12,6 +12,7 @@ import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../database";
 import { Category } from "../database/models/category.model";
 import { Post } from "../database/models/post.model";
+import { Tag } from "../database/models/tag.model";
 import User from "../database/models/user.model";
 import { handleError } from "../utils";
 
@@ -21,10 +22,10 @@ const getCategoryByName = async (name: string) => {
 
 const populatePost = (query: any) => {
   return query
-    .poopulate({
+    .populate({
       path: "author",
       model: User,
-      select: "_id firstName lastName",
+      select: "_id username",
     })
     .populate({
       path: "category",
@@ -82,7 +83,7 @@ export const getAllBlogPosts = async ({
       ...(categoryCondition && { category: categoryCondition._id }),
     };
 
-    const skipAmount = (Number(page) - 1) * limit;
+    const skipAmount = page <= 0 ? 0 : (Number(page) - 1) * limit;
     const blogPostQuery = Post.find(conditions)
       .sort({ createdAt: "desc" })
       .skip(skipAmount)
@@ -104,7 +105,22 @@ export const getBlogPostById = async (postId: string) => {
   try {
     await connectToDatabase();
 
-    const post = await Post.findById(postId);
+    const post = await Post.findById(postId)
+      .populate({
+        path: "author",
+        model: User,
+        select: "_id username",
+      })
+      .populate({
+        path: "category",
+        model: Category,
+        select: "_id name description",
+      })
+      .populate({
+        path: "tags",
+        model: Tag,
+        select: "_id name",
+      });
 
     if (!post) throw new Error("Post not found");
 

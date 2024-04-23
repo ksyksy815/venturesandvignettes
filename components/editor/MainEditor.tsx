@@ -10,18 +10,19 @@ import {
   RenderLeafProps,
   Slate,
 } from "slate-react";
-import CodeElement from "./CodeElement";
 import CustomEditor from "./CustomEditor";
-import CustomImage from "./CustomImage";
-import DefaultElement from "./DefaultElement";
-import HeaderOneElement from "./HeaderOneElement";
-import HeaderThreeElement from "./HeaderThreeElement";
-import HeaderTwoElement from "./HeaderTwoElement";
 import Leaf from "./Leaf";
-import LinkElement from "./LinkElement";
-import ListElement from "./ListElement";
-import QuoteElement from "./QuoteElement";
-import YouTubeElement from "./YouTubeElement";
+import AlignedElement from "./blocks/AlignedElement";
+import CodeElement from "./blocks/CodeElement";
+import CustomImage from "./blocks/CustomImage";
+import DefaultElement from "./blocks/DefaultElement";
+import HeaderOneElement from "./blocks/HeaderOneElement";
+import HeaderThreeElement from "./blocks/HeaderThreeElement";
+import HeaderTwoElement from "./blocks/HeaderTwoElement";
+import LinkElement from "./blocks/LinkElement";
+import ListElement from "./blocks/ListElement";
+import QuoteElement from "./blocks/QuoteElement";
+import YouTubeElement from "./blocks/YouTubeElement";
 import ToolBar from "./toolBar/ToolBar";
 
 declare module "slate" {
@@ -56,6 +57,10 @@ const MainEditor = ({ editor, initialValue }: Props) => {
         return <HeaderTwoElement {...props} />;
       case "headerThree":
         return <HeaderThreeElement {...props} />;
+      case "aligned-left":
+      case "aligned-center":
+      case "aligned-right":
+        return <AlignedElement {...props} />;
       case "youtube":
         return <YouTubeElement {...props} />;
       default:
@@ -85,7 +90,7 @@ const MainEditor = ({ editor, initialValue }: Props) => {
       >
         <ToolBar editor={editor} />
         <Editable
-          className={`min-h-[70vh] px-4 py-4 lg:px-8 lg:py-8 bg-white focus:outline-none`}
+          className={`editor-element-padding min-h-[70vh] py-4 lg:py-8 bg-white focus:outline-none`}
           onChange={(value) => {
             console.log("onChange", value);
           }}

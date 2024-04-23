@@ -7,7 +7,13 @@ import NoPost from "./NoPost";
 import Pagination from "./Pagination";
 
 const PostListPage = () => {
-  const { data, currentCategory, updateCurrentCategory } = useFetchPostList();
+  const {
+    postList,
+    totalPages,
+    isLoading,
+    currentCategory,
+    updateCurrentCategory,
+  } = useFetchPostList();
 
   return (
     <section
@@ -17,10 +23,11 @@ const PostListPage = () => {
         currentCategory={currentCategory}
         updateCategoryName={updateCurrentCategory}
       />
-      {data?.length > 1 ? (
+      {isLoading && <div>Loading...</div>}
+      {postList?.length > 0 ? (
         <>
-          <PostList list={data} />
-          <Pagination totalPages={1} currentPage={0 + 1} />
+          <PostList list={postList} />
+          <Pagination totalPages={totalPages} currentPage={0 + 1} />
         </>
       ) : (
         <NoPost />

@@ -1,4 +1,8 @@
-import { CustomElement, ParagraphElementType } from "@/types/edidor.type";
+import {
+  CustomElement,
+  ParagraphElementType,
+  SectionElementType,
+} from "@/types/edidor.type";
 import { Editor, Editor as EditorType, Element, Transforms } from "slate";
 
 const embedRegex = [
@@ -122,6 +126,17 @@ const CustomEditor = {
     return !!match;
   },
 
+  isAlignedBlockActive(editor: EditorType) {
+    const [match] = Editor.nodes(editor, {
+      match: (n) =>
+        (n as Element).type === "aligned-left" ||
+        (n as Element).type === "aligned-center" ||
+        (n as Element).type === "aligned-right",
+    });
+
+    return !!match;
+  },
+
   /* Styles */
   toggleBoldMark(editor: EditorType) {
     const isActive = CustomEditor.isBoldMarkActive(editor);
@@ -215,20 +230,10 @@ const CustomEditor = {
       url,
       children: [{ text: "" }],
     };
+    const paragraphBlock = { type: "paragraph", children: [{ text: "" }] };
 
-    // if (editor.selection) {
-    //   const path = editor.selection.focus.path;
-    //   const parentPath = path.slice(0, -1);
-    //   const index = path[path.length - 1];
-
-    //   Transforms.insertNodes(editor, imageBlock, {
-    //     at: [...parentPath, index + 1],
-    //   });
-    // } else {
-    //TODO: 일단 난 바보라 노드 맨 뒤에 넣는거만 가능함
-    Transforms.insertNodes(editor, imageBlock, {
-      at: [editor.children.length],
-    });
+    Transforms.insertNodes(editor, imageBlock);
+    Transforms.insertNodes(editor, paragraphBlock as ParagraphElementType);
     // }
   },
 
@@ -250,11 +255,22 @@ const CustomEditor = {
     );
   },
 
+  toggleAlignedBlock(
+    editor: EditorType,
+    type: "aligned-left" | "aligned-center" | "aligned-right"
+  ) {
+    const isActive = CustomEditor.isAlignedBlockActive(editor);
+    console.log(isActive, type);
+    Transforms.setNodes(
+      editor,
+      { type: isActive ? "paragraph" : type },
+      { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
+    );
+  },
+
   addEmptySection(editor: EditorType) {
-    const paragraph = { type: "paragraph", children: [{ text: "" }] };
-    Transforms.insertNodes(editor, paragraph as ParagraphElementType, {
-      at: editor.children.length,
-    });
+    const section = { type: "section", children: [{ text: "" }] };
+    Transforms.insertNodes(editor, section as SectionElementType);
   },
 };
 

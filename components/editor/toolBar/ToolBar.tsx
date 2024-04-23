@@ -1,6 +1,9 @@
 "use client";
 
 import {
+  FiAlignCenter,
+  FiAlignLeft,
+  FiAlignRight,
   FiBold,
   FiCode,
   FiItalic,
@@ -60,6 +63,38 @@ const ToolBar = ({ editor }: { editor: Editor }) => {
         >
           <RxStrikethrough size={28} />
         </button>
+
+        <button
+          type={"button"}
+          className={`h-[30px] w-[30px] grid place-content-center`}
+          onMouseDown={(event) => {
+            event.preventDefault();
+            CustomEditor.toggleAlignedBlock(editor, "aligned-left");
+          }}
+        >
+          <FiAlignLeft size={22} />
+        </button>
+        <button
+          type={"button"}
+          className={`h-[30px] w-[30px] grid place-content-center`}
+          onMouseDown={(event) => {
+            event.preventDefault();
+            CustomEditor.toggleAlignedBlock(editor, "aligned-center");
+          }}
+        >
+          <FiAlignCenter size={22} />
+        </button>
+        <button
+          type={"button"}
+          className={`h-[30px] w-[30px] grid place-content-center`}
+          onMouseDown={(event) => {
+            event.preventDefault();
+            CustomEditor.toggleAlignedBlock(editor, "aligned-right");
+          }}
+        >
+          <FiAlignRight size={22} />
+        </button>
+
         <button
           type={"button"}
           className={`h-[30px] w-[30px] grid place-content-center`}
