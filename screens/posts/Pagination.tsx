@@ -11,7 +11,7 @@ const Pagination = ({ currentPage, totalPages }: Props) => {
           <svg
             className={`w-4 h-4`}
             fill="none"
-            stroke="currentColor"
+            stroke="black"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -24,34 +24,25 @@ const Pagination = ({ currentPage, totalPages }: Props) => {
           </svg>
         </button>
         <div className={`flex items-center gap-x-2`}>
-          <button
-            className={`w-10 h-10 flex items-center justify-center ${
-              currentPage === 1
-                ? "underline font-semibold"
-                : "font-medium hover:text-vv-orange"
-            }`}
-          >
-            1
-          </button>
-          <button
-            className={`w-10 h-10 flex items-center justify-center ${
-              currentPage === 2
-                ? "underline font-semibold"
-                : "font-medium hover:text-vv-orange"
-            }`}
-          >
-            2
-          </button>
-          <button
-            className={`w-10 h-10 flex items-center justify-center ${
-              currentPage === 3
-                ? "underline font-semibold"
-                : "font-medium hover:text-vv-orange"
-            }`}
-          >
-            3
-          </button>
-          {totalPages < 3 && (
+          {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+            (page) => {
+              return (
+                <button
+                  key={page}
+                  type="button"
+                  className={`w-10 h-10 flex items-center justify-center ${
+                    currentPage === page
+                      ? "underline font-semibold"
+                      : "font-medium hover:text-vv-orange"
+                  }`}
+                >
+                  {page}
+                </button>
+              );
+            }
+          )}
+
+          {totalPages > 3 && (
             <button
               className={`w-10 h-10 flex items-center justify-center hover:text-vv-orange`}
             >
@@ -65,7 +56,7 @@ const Pagination = ({ currentPage, totalPages }: Props) => {
           <svg
             className={`w-4 h-4`}
             fill="none"
-            stroke="currentColor"
+            stroke="black"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >

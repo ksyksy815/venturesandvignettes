@@ -1,7 +1,8 @@
 "use client";
 
 import PostList from "@/components/shared/PostList";
-import useFetchPostList from "@/hooks/post/useFetchPostList";
+import PostListSkeleton from "@/components/shared/PostListSkeleton";
+import usePostListPage from "@/hooks/post/usePostListPage";
 import Categories from "./Categories";
 import NoPost from "./NoPost";
 import Pagination from "./Pagination";
@@ -9,21 +10,23 @@ import Pagination from "./Pagination";
 const PostListPage = () => {
   const {
     postList,
+    categoryList,
     totalPages,
     isLoading,
     currentCategory,
     updateCurrentCategory,
-  } = useFetchPostList();
+  } = usePostListPage();
 
   return (
     <section
       className={`w-full flex flex-col px-4 pt-12 py-6 gap-y-6 lg:px-8 lg:pt-16 lg:pb-8`}
     >
       <Categories
+        categoryList={categoryList}
         currentCategory={currentCategory}
         updateCategoryName={updateCurrentCategory}
       />
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <PostListSkeleton />}
       {postList?.length > 0 ? (
         <>
           <PostList list={postList} />

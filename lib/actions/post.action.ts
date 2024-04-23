@@ -16,6 +16,16 @@ import { Tag } from "../database/models/tag.model";
 import User from "../database/models/user.model";
 import { handleError } from "../utils";
 
+export const getCategoryById = async (categoryId: string) => {
+  try {
+    await connectToDatabase();
+
+    return await Category.findById(categoryId);
+  } catch (error) {
+    handleError(error);
+  }
+};
+
 const getCategoryByName = async (name: string) => {
   return Category.findOne({ name: { $regex: name, $options: "i" } });
 };
@@ -65,6 +75,7 @@ export const getAllBlogPosts = async ({
   try {
     await connectToDatabase();
 
+    console.log(category);
     const titleCondition = keyword
       ? { title: { $regex: keyword, $options: "i" } }
       : {};
@@ -74,9 +85,9 @@ export const getAllBlogPosts = async ({
     const tagCondition = keyword
       ? { tags: { $regex: keyword, $options: "i" } }
       : {};
-    const categoryCondition = category
-      ? await getCategoryByName(category)
-      : null;
+    const categoryCondition = category ? await getCategoryById(category) : null;
+
+      
 
     const conditions = {
       $or: [titleCondition, summaryCondition, tagCondition],
