@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import DefaultBlock from "@/components/postBlocks/DefaultBlock";
 import HeaderBlock from "@/components/postBlocks/HeaderBlock";
 import Keywords from "@/components/postBlocks/Keywords";
