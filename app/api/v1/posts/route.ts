@@ -14,11 +14,13 @@ export async function GET({ url }: NextRequest) {
 
       const categoryId = params.get("categoryId") || "";
       const page = params.get("page") || 0;
+      const keyword = params.get("keyword") || "";
 
       const categories = await getAllBlogPosts({
         limit: 9,
         page: Number(page) ? Number(page) : 0,
         category: categoryId ? categoryId : undefined,
+        keyword,
       });
 
       return new Response(JSON.stringify(categories));

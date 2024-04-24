@@ -8,14 +8,15 @@ const useFetchPostList = () => {
   const searchParams = useSearchParams();
   const [currentCategory, setCurrentCategory] = useState("ALL");
   const [page, setPage] = useState(0);
+  const keyword = searchParams.get("keyword") || "";
 
   const { data, isLoading } = useQuery({
-    queryKey: [queryKeys.post.list, currentCategory],
+    queryKey: [queryKeys.post.list, currentCategory, keyword, page],
     queryFn: async () =>
       await postClient.getPostList({
         categoryId: currentCategory === "ALL" ? "" : currentCategory,
         page,
-        keyword: searchParams.get("keyword") || "",
+        keyword,
       }),
   });
 

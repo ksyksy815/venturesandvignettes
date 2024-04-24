@@ -81,23 +81,38 @@ export const getAllBlogPosts = async ({
     const summaryCondition = keyword
       ? { summary: { $regex: keyword, $options: "i" } }
       : {};
-    const tagCondition = keyword
-      ? { tags: { $regex: keyword, $options: "i" } }
-      : {};
+
     const categoryCondition = category ? await getCategoryById(category) : null;
 
     const conditions = {
-      $or: [titleCondition, summaryCondition, tagCondition],
+      $or: [titleCondition, summaryCondition],
       ...(categoryCondition && { category: categoryCondition._id }),
     };
 
     const skipAmount = page <= 0 ? 0 : (Number(page) - 1) * limit;
-    const blogPostQuery = Post.find(conditions)
-      .sort({ createdAt: "desc" })
-      .skip(skipAmount)
-      .limit(limit);
 
-    const blogPosts = await populatePost(blogPostQuery);
+    const blogPostQuery = Post.aggregate([
+      {
+        $lookup: {
+          from: "tags",
+          localField: "tags",
+          foreignField: "_id",
+          as: "tags",
+        },
+      },
+      {
+        $match: {
+          $or: [
+            conditions,
+            { "tags.name": { $regex: keyword, $options: "i" } },
+          ],
+        },
+      },
+      { $skip: skipAmount },
+      { $limit: limit },
+    ]);
+
+    const blogPosts = await blogPostQuery.exec();
     const blogCount = await Post.countDocuments(conditions);
 
     return {
