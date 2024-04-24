@@ -21,7 +21,6 @@ const AddImageModal = ({ editor, isOpen, closeModal }: Props) => {
   const [image, setImage] = useState<string>("");
 
   const handleUpload = async () => {
-    console.log("file: ", files);
     // upload image
     let uploadedImageUrl = "";
     if (files.length > 0) {

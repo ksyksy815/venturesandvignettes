@@ -11,6 +11,7 @@ export type CreateCommentParams = {
 export type Comment = {
   _id: string;
   content: string;
+  url?: string;
   user: string;
   password: string;
   createdAt: Date;

@@ -7,6 +7,9 @@ import TableOfContents, {
 } from "@/components/postBlocks/TableOfContents";
 import BasePage from "@/components/shared/BasePage";
 import { getBlogPostById } from "@/lib/actions/post.action";
+import CommentForm from "@/screens/posts/CommentForm";
+import Comments from "@/screens/posts/Comments";
+import PostsInSameCategory from "@/screens/posts/PostsInSameCategory";
 import { CustomElement } from "@/types/edidor.type";
 import dayjs from "dayjs";
 
@@ -24,8 +27,6 @@ const Page = async ({ params: { id } }: Props) => {
   const postId =
     id.lastIndexOf("-") > 0 ? id.slice(id.lastIndexOf("-") + 1) : id;
   const post = await getBlogPostById(postId);
-
-  console.log(post);
 
   const stringifiedContent = JSON.parse(post.content);
 
@@ -48,10 +49,9 @@ const Page = async ({ params: { id } }: Props) => {
     []
   );
 
-  console.log(stringifiedContent);
   return (
     <BasePage className={`bg-white`}>
-      <div className={`w-full flex flex-col pb-6 lg:pb-12 lg:px-[144px]`}>
+      <div className={`w-full flex flex-col pb-6 lg:py-12 lg:px-[144px]`}>
         <section>
           <img
             src={post.image}
@@ -61,7 +61,7 @@ const Page = async ({ params: { id } }: Props) => {
         </section>
 
         <section
-          className={`flex flex-col w-full px-3 py-12 gap-y-12 lg:py-[52px]`}
+          className={`flex flex-col w-full px-3 py-12 gap-y-12 lg:px-0 lg:py-[52px]`}
         >
           <div className={`w-full flex flex-col gap-y-3`}>
             <h1 className={`h1`}>{post.title}</h1>
@@ -97,13 +97,11 @@ const Page = async ({ params: { id } }: Props) => {
         <Keywords tagList={post.tags} />
       </div>
 
-      <section className={`bg-vv-lightGray`}>Posts on Nature Escapes</section>
+      <PostsInSameCategory category={post?.category} />
 
-      <section>Related Tags</section>
+      <Comments commentList={post.comments || []} />
 
-      <section>RelatedPosts</section>
-
-      <section>Leave a comment</section>
+      <CommentForm postId={post._id} />
     </BasePage>
   );
 };

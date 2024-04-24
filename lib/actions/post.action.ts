@@ -75,7 +75,6 @@ export const getAllBlogPosts = async ({
   try {
     await connectToDatabase();
 
-    console.log(category);
     const titleCondition = keyword
       ? { title: { $regex: keyword, $options: "i" } }
       : {};
@@ -86,8 +85,6 @@ export const getAllBlogPosts = async ({
       ? { tags: { $regex: keyword, $options: "i" } }
       : {};
     const categoryCondition = category ? await getCategoryById(category) : null;
-
-      
 
     const conditions = {
       $or: [titleCondition, summaryCondition, tagCondition],
@@ -125,7 +122,7 @@ export const getBlogPostById = async (postId: string) => {
       .populate({
         path: "category",
         model: Category,
-        select: "_id name description",
+        select: "_id name",
       })
       .populate({
         path: "tags",

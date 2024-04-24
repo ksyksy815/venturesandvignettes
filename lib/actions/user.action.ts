@@ -1,13 +1,13 @@
 "use server";
 
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import cookie from "cookie";
+import { LOGIN_COOKIE } from "@/constants";
 import { AddNewUserParams, UpdateUserParams } from "@/types/user.type";
+import bcrypt from "bcrypt";
+import cookie from "cookie";
+import jwt from "jsonwebtoken";
 import { connectToDatabase } from "../database";
 import User from "../database/models/user.model";
 import { handleError } from "../utils";
-import { LOGIN_COOKIE } from "@/constants";
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 
@@ -41,7 +41,7 @@ export const getUserByEmailAndPassword = async (
 export const getAllUsers = async () => {
   try {
     await connectToDatabase();
-    console.log("getAllUsers");
+
     const users = await User.find();
 
     return JSON.parse(JSON.stringify(users));

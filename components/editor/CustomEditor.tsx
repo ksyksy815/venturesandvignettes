@@ -260,7 +260,7 @@ const CustomEditor = {
     type: "aligned-left" | "aligned-center" | "aligned-right"
   ) {
     const isActive = CustomEditor.isAlignedBlockActive(editor);
-    console.log(isActive, type);
+
     Transforms.setNodes(
       editor,
       { type: isActive ? "paragraph" : type },
