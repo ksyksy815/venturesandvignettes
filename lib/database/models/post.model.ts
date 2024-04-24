@@ -15,6 +15,7 @@ export interface IPost extends Document {
   isDisplayed: boolean;
   comments: IComment[];
   image: string; // 16:9 ratio
+  isFeatured?: boolean;
   thumbnailImage?: string; // 16:9 ratio. a smaller version of the cover image in the content
 }
 
@@ -31,6 +32,7 @@ const postSchema = new Schema<IPost>({
   isDisplayed: { type: Boolean, default: true },
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   image: { type: String, required: true },
+  isFeatured: { type: Boolean, default: false },
   thumbnailImage: { type: String },
 });
 

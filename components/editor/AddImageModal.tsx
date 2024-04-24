@@ -33,6 +33,8 @@ const AddImageModal = ({ editor, isOpen, closeModal }: Props) => {
     }
 
     // then close modal
+    setFiles([]);
+    setImage("");
     closeModal();
   };
 

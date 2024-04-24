@@ -2,13 +2,18 @@ class PostClient {
   getPostList = async ({
     categoryId = "",
     page = 0,
+    keyword = "",
   }: {
     categoryId: string;
     page: number;
+    keyword?: string;
   }) => {
-    return await fetch(`/api/v1/posts?categoryId=${categoryId}&page=${page}`, {
-      method: "GET",
-    }).then((res) => res.json());
+    return await fetch(
+      `/api/v1/posts?keyword=${keyword}&categoryId=${categoryId}&page=${page}`,
+      {
+        method: "GET",
+      }
+    ).then((res) => res.json());
   };
 }
 

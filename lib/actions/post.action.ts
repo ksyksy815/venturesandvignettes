@@ -69,7 +69,7 @@ export const createBlogPost = async ({
 export const getAllBlogPosts = async ({
   limit = 10,
   page = 0,
-  keyword,
+  keyword = "",
   category,
 }: GetAllBlogPostsParams) => {
   try {
@@ -104,6 +104,21 @@ export const getAllBlogPosts = async ({
       data: JSON.parse(JSON.stringify(blogPosts)),
       totalPages: Math.ceil(blogCount / limit),
     };
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+export const getFeaturedPosts = async () => {
+  try {
+    await connectToDatabase();
+
+    const conditions = { isFeatured: true };
+    const featuredPosts = await populatePost(
+      Post.find(conditions).sort({ createdAt: "desc" })
+    );
+
+    return JSON.parse(JSON.stringify(featuredPosts));
   } catch (error) {
     handleError(error);
   }

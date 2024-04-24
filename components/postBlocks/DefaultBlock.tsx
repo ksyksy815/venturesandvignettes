@@ -4,16 +4,22 @@ type Props = ParagraphElementType;
 
 const DefaultBlock = ({ children }: Props) => {
   return (
-    <div className={`editor-element-padding relative w-full`}>
+    <p className={`mb-2 editor-element-padding relative w-full`}>
       {children.map((child, index) => {
         const { text } = child;
         return (
-          <p key={index} style={{ marginBottom: "1rem" }}>
+          <span
+            key={index}
+            style={{
+              fontStyle: child.italic ? "italic" : "normal",
+              fontWeight: child.bold ? "bold" : "normal",
+            }}
+          >
             {text}
-          </p>
+          </span>
         );
       })}
-    </div>
+    </p>
   );
 };
 

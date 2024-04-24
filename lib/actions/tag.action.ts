@@ -9,7 +9,7 @@ export const getAllTags = async () => {
   try {
     await connectToDatabase();
 
-    const tags = await Tag.find();
+    const tags = await Tag.find().limit(30);
 
     return tags.map((tag) => JSON.parse(JSON.stringify(tag))) as TagType[];
   } catch (error) {

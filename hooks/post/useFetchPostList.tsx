@@ -1,9 +1,11 @@
 import queryKeys from "@/constants/queryKeys";
 import postClient from "@/lib/services/post.service";
 import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 const useFetchPostList = () => {
+  const searchParams = useSearchParams();
   const [currentCategory, setCurrentCategory] = useState("ALL");
   const [page, setPage] = useState(0);
 
@@ -13,6 +15,7 @@ const useFetchPostList = () => {
       await postClient.getPostList({
         categoryId: currentCategory === "ALL" ? "" : currentCategory,
         page,
+        keyword: searchParams.get("keyword") || "",
       }),
   });
 
