@@ -34,7 +34,7 @@ const PostCardLarge = ({
                 {category.name || ""}
               </p>
               <h3
-                className={`h2 hover:text-vv-orange line-clamp-3 lg:h-[84px]`}
+                className={`text-2xl font-medium leading-7 hover:text-vv-orange line-clamp-3 lg:h-[84px]`}
               >
                 {title || ""}
               </h3>

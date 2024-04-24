@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import DefaultBlock from "@/components/postBlocks/DefaultBlock";
 import HeaderBlock from "@/components/postBlocks/HeaderBlock";
+import ImageBlock from "@/components/postBlocks/ImageBlock";
 import Keywords from "@/components/postBlocks/Keywords";
 import TableOfContents, {
   TableOfContentsProps,
@@ -90,6 +91,10 @@ const Page = async ({ params: { id } }: Props) => {
               case "headerTwo":
               case "headerThree":
                 return <HeaderBlock key={index} {...element} index={index} />;
+              case "image":
+                return (
+                  <ImageBlock key={index} postTitle={post.title} {...element} />
+                );
             }
           })}
         </section>

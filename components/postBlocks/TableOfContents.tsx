@@ -7,7 +7,9 @@ export type TableOfContentsProps = {
 };
 const TableOfContents = ({ headers }: TableOfContentsProps) => {
   return (
-    <section className={`w-full flex flex-col gap-y-4 bg-vv-lightGray p-6`}>
+    <section
+      className={`mb-12 w-full flex flex-col gap-y-4 bg-vv-lightGray p-6 lg:mb-[52px]`}
+    >
       <p className={`text-[20px] font-medium`}>Table of Contents</p>
       <ul className={`flex flex-col gap-y-2 text-sm font-medium lg:text-lg`}>
         {headers.map((header) => {
