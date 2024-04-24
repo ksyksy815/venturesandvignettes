@@ -1,10 +1,13 @@
 import BasePage from "@/components/shared/BasePage";
 import PostListPage from "@/screens/posts/PostListPage";
+import { Suspense } from "react";
 
 const Page = () => {
   return (
     <BasePage>
-      <PostListPage />
+      <Suspense>
+        <PostListPage />
+      </Suspense>
     </BasePage>
   );
 };
