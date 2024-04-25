@@ -6,6 +6,7 @@ const usePostListPage = () => {
     postList,
     totalPages,
     isLoading,
+    isFetched,
     currentCategory,
     updateCurrentCategory,
   } = useFetchPostList();
@@ -17,6 +18,7 @@ const usePostListPage = () => {
     categoryList,
     totalPages,
     isLoading,
+    isFetched,
     currentCategory,
     updateCurrentCategory,
   };

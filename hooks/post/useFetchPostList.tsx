@@ -10,7 +10,7 @@ const useFetchPostList = () => {
   const [page, setPage] = useState(0);
   const keyword = searchParams.get("keyword") || "";
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isFetched } = useQuery({
     queryKey: [queryKeys.post.list, currentCategory, keyword, page],
     queryFn: async () =>
       await postClient.getPostList({
@@ -28,6 +28,7 @@ const useFetchPostList = () => {
     postList: data?.data || [],
     totalPages: data?.totalPages || 0,
     isLoading,
+    isFetched,
     currentCategory,
     updateCurrentCategory,
   };

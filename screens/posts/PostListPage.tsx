@@ -16,6 +16,7 @@ const PostListPage = () => {
     categoryList,
     totalPages,
     isLoading,
+    isFetched,
     currentCategory,
     updateCurrentCategory,
   } = usePostListPage();
@@ -42,9 +43,8 @@ const PostListPage = () => {
           <PostList list={postList} />
           <Pagination totalPages={totalPages} currentPage={0 + 1} />
         </>
-      ) : (
-        <NoPost />
-      )}
+      ) : null}
+      {!isLoading && isFetched && postList?.length === 0 && <NoPost />}
     </section>
   );
 };
