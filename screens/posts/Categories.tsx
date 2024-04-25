@@ -28,7 +28,7 @@ const Categories = ({
           key={category.name}
           id={category._id}
           text={category.name}
-          onClick={() => updateCategoryName(category._id)}
+          onClick={() => updateCategoryName(category.name)}
           currentCategory={currentCategory}
         />
       ))}

@@ -1,32 +1,39 @@
-import { getAllBlogPosts } from "@/lib/actions/post.action";
+import {
+  getAllBlogPosts,
+  getBlogPostsByCategory,
+} from "@/lib/actions/post.action";
 import { handleError } from "@/lib/utils";
 import { NextRequest } from "next/server";
 
 export const dynamic = "force-dynamic";
 
 export async function GET({ url }: NextRequest) {
+  const query = url.split("?")[1];
+  const params = new URLSearchParams(query);
+
   try {
-    const hasQuery = url.indexOf("?") !== -1;
+    if (params.has(`categoryName`) && params.get("categoryName") !== "") {
+      const categoryName = params.get("categoryName") || "";
+      const page = params.get("page") || 0;
 
-    if (hasQuery) {
-      const query = url.split("?")[1];
-      const params = new URLSearchParams(query);
+      const postList = await getBlogPostsByCategory({
+        limit: 9,
+        page: Number(page) ? Number(page) : 0,
+        category: categoryName,
+      });
 
-      const categoryId = params.get("categoryId") || "";
+      return new Response(JSON.stringify(postList));
+    } else {
       const page = params.get("page") || 0;
       const keyword = params.get("keyword") || "";
 
-      const categories = await getAllBlogPosts({
+      const postList = await getAllBlogPosts({
         limit: 9,
         page: Number(page) ? Number(page) : 0,
-        category: categoryId ? categoryId : undefined,
         keyword,
       });
 
-      return new Response(JSON.stringify(categories));
-    } else {
-      const categories = await getAllBlogPosts({ limit: 9, page: 0 });
-      return new Response(JSON.stringify(categories));
+      return new Response(JSON.stringify(postList));
     }
   } catch (error) {
     handleError(error);

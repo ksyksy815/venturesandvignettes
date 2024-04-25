@@ -14,7 +14,7 @@ const useFetchPostList = () => {
     queryKey: [queryKeys.post.list, currentCategory, keyword, page],
     queryFn: async () =>
       await postClient.getPostList({
-        categoryId: currentCategory === "ALL" ? "" : currentCategory,
+        categoryName: currentCategory === "ALL" ? "" : currentCategory,
         page,
         keyword,
       }),
