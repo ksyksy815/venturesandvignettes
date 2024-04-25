@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { BlogPost } from "@/types/post.type";
+import Image from "next/image";
 import Link from "next/link";
 
 type Props = BlogPost;
@@ -11,17 +12,19 @@ const PostCardLarge = ({
   summary,
   category,
   image,
-  thumbnailImage,
 }: Props) => {
   return (
     <Link href={`/posts/${slug}-${_id}`}>
       <div
         className={`w-full flex flex-col flex-1 bg-white rounded-[32px] overflow-hidden shadow-base`}
       >
-        <div className={`w-full h-[200px]`}>
-          <img
+        <div className={`relative w-full h-[200px]`}>
+          <Image
             src={image}
             alt={title}
+            fill={true}
+            sizes={`(max-width:767px) 100vw, 298.66px`}
+            priority={false}
             className={`w-full h-full object-cover`}
           />
         </div>

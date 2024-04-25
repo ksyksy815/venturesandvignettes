@@ -16,7 +16,7 @@ const Pill = ({
   return (
     <div
       className={` px-6 py-1 rounded-full text-lg leading-4 lg:leading-6 grind place-content-center font-medium ${
-        currentCategory.toLocaleLowerCase() === id.toLocaleLowerCase()
+        currentCategory.toLocaleLowerCase() === text.toLocaleLowerCase()
           ? "bg-vv-black text-white select-none"
           : "text-vv-black bg-white cursor-pointer hover:bg-vv-orange hover:text-white"
       } shadow-sm`}
