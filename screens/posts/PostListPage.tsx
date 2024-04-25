@@ -5,6 +5,7 @@ import PostListSkeleton from "@/components/shared/PostListSkeleton";
 import usePostListPage from "@/hooks/post/usePostListPage";
 import { useSearchParams } from "next/navigation";
 import Categories from "./Categories";
+import NoPost from "./NoPost";
 import Pagination from "./Pagination";
 import SearchResults from "./SearchResults";
 
@@ -41,7 +42,9 @@ const PostListPage = () => {
           <PostList list={postList} />
           <Pagination totalPages={totalPages} currentPage={0 + 1} />
         </>
-      ) : null}
+      ) : (
+        <NoPost />
+      )}
     </section>
   );
 };
