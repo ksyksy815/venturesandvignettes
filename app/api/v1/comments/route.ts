@@ -15,10 +15,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.error();
     }
 
-    return {
-      status: 200,
-      body: { message: "Comment created successfully" },
-    };
+    return new Response(JSON.stringify(resp));
   } catch (error) {
     handleError(error);
     return NextResponse.error(); // Remove the empty object argument
