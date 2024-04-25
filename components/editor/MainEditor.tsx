@@ -90,7 +90,7 @@ const MainEditor = ({ editor, initialValue }: Props) => {
       >
         <ToolBar editor={editor} />
         <Editable
-          className={`editor-element-padding min-h-[70vh] py-4 lg:py-8 bg-white focus:outline-none`}
+          className={`editor-element-padding min-h-[70vh] lg:py-8 bg-white focus:outline-none rounded-lg`}
           onChange={(value) => {
             console.log("onChange", value);
           }}
