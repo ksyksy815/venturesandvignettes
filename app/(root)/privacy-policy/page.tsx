@@ -1,5 +1,7 @@
+import BasePage from "@/components/shared/BasePage";
+
 const page = () => {
-  return <div>page</div>;
+  return <BasePage>Privacy-policy</BasePage>;
 };
 
 export default page;
