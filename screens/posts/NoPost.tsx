@@ -10,6 +10,7 @@ const NoPost = () => {
             src={`/images/cactus.png`}
             fill={true}
             alt={"no result found cactus"}
+            className={`opacity-50`}
           />
         </div>
 
