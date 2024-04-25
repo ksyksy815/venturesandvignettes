@@ -120,11 +120,11 @@ const PageLoading = () => {
   return (
     <div className={`grid place-content-center w-full flex-1`}>
       <div className={`relative h-full flex items-center gap-x-2`}>
-        <span className={`w-2 h-2 bg-vv-darkGray rounded-full`} />
-        <span className={`w-2 h-2 bg-vv-darkGray rounded-full`} />
-        <span className={`w-2 h-2 bg-vv-darkGray rounded-full`} />
-        <span className={`w-2 h-2 bg-vv-darkGray rounded-full`} />
-        <span className={`w-2 h-2 bg-vv-darkGray rounded-full`} />
+        <span className={`w-2 h-2 bg-white rounded-full`} />
+        <span className={`w-2 h-2 bg-white rounded-full`} />
+        <span className={`w-2 h-2 bg-white rounded-full`} />
+        <span className={`w-2 h-2 bg-white rounded-full`} />
+        <span className={`w-2 h-2 bg-white rounded-full`} />
 
         <span
           id={`black-dot`}

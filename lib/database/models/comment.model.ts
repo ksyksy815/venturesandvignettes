@@ -2,21 +2,23 @@ import { Document, Schema, model, models } from "mongoose";
 
 export interface IComment extends Document {
   _id: string;
-  content: string;
   user: string;
-  password: string;
-  createdAt: Date;
+  email: string;
+  postId: string;
+  content: string;
+  url?: string;
   isAccepted: boolean;
-  blogPostId: string;
+  createdAt: Date;
 }
 
 const commentSchema = new Schema<IComment>({
-  content: { type: String, required: true },
   user: { type: String, required: true },
-  password: { type: String, required: true },
+  email: { type: String, required: true },
+  postId: { type: String, required: true },
+  content: { type: String, required: true },
+  url: { type: String },
+  isAccepted: { type: Boolean, required: true },
   createdAt: { type: Date, default: Date.now },
-  isAccepted: { type: Boolean, default: false },
-  blogPostId: { type: String, required: true },
 });
 
 const Comment = models.Comment || model<IComment>("Comment", commentSchema);

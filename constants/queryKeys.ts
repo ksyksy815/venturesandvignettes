@@ -18,6 +18,9 @@ const queryKeys = {
   post: {
     list: "post/list",
   },
+  comment: {
+    add: "comment/add",
+  },
 };
 
 export default queryKeys;

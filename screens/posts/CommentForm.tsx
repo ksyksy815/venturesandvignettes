@@ -1,30 +1,26 @@
 "use client";
 
+import PageLoading from "@/components/shared/PageLoading";
 import { Button } from "@/components/ui/button";
 import { Form, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import useCommentForm from "@/hooks/comment/useCommentForm";
+import { CommentFormData, commentSchema } from "@/utils/schema/comment.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 type Props = {
   postId: string;
+  postSlug: string;
 };
 
-const commentSchema = z.object({
-  name: z.string().min(3, { message: "Name is required." }),
-  email: z.string().email({ message: "Email is required." }),
-  url: z.string().url().optional(),
-  content: z
-    .string()
-    .min(3, { message: "Content is required." })
-    .max(250, { message: "Content is too long." }),
-});
+const CommentForm = ({ postId, postSlug }: Props) => {
+  const { addComment, status } = useCommentForm({
+    postId,
+    slug: postSlug,
+  });
 
-type CommentFormData = z.infer<typeof commentSchema>;
-
-const CommentForm = ({ postId }: Props) => {
   const form = useForm<CommentFormData>({
     resolver: zodResolver(commentSchema),
     defaultValues: {
@@ -38,8 +34,18 @@ const CommentForm = ({ postId }: Props) => {
   const onSubmit = (data: CommentFormData) => {
     if (!data) return;
 
-    console.log(data);
+    addComment(data);
   };
+
+  if (status === "pending") {
+    return (
+      <div
+        className={`fixed top-0 left-0 grid place-content-center w-screen h-screen bg-black/60`}
+      >
+        <PageLoading />
+      </div>
+    );
+  }
 
   return (
     <section className={`flex flex-col w-full px-4 py-8 gap-y-4 lg:p-12`}>

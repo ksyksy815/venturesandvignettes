@@ -125,7 +125,7 @@ const Page = async ({ params: { id } }: Props) => {
 
       <Comments commentList={post.comments || []} />
 
-      <CommentForm postId={post._id} />
+      <CommentForm postId={post._id} postSlug={post.slug} />
     </BasePage>
   );
 };

@@ -1,6 +1,7 @@
 "use server";
 
 import { CreateCommentParams } from "@/types/comment.type";
+import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../database";
 import Comment from "../database/models/comment.model";
 import { Post } from "../database/models/post.model";
@@ -9,7 +10,9 @@ import { handleError } from "../utils";
 export const createComment = async ({
   user,
   postId,
-  comment,
+  email,
+  content,
+  url,
   path,
 }: CreateCommentParams) => {
   try {
@@ -21,11 +24,16 @@ export const createComment = async ({
     }
 
     const newComment = await Comment.create({
-      ...comment,
+      content,
       user,
+      email,
       postId,
+      url,
       isAccepted: false,
+      createdAt: new Date(),
     });
+
+    revalidatePath(path);
 
     return JSON.parse(JSON.stringify(newComment));
   } catch (error) {
