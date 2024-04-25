@@ -7,11 +7,15 @@ import TableOfContents, {
   TableOfContentsProps,
 } from "@/components/postBlocks/TableOfContents";
 import BasePage from "@/components/shared/BasePage";
-import { getBlogPostById } from "@/lib/actions/post.action";
+import {
+  getBlogPostById,
+  getBlogPostsByCategory,
+} from "@/lib/actions/post.action";
 import CommentForm from "@/screens/posts/CommentForm";
 import Comments from "@/screens/posts/Comments";
 import PostsInSameCategory from "@/screens/posts/PostsInSameCategory";
 import { CustomElement } from "@/types/edidor.type";
+import { BlogPost } from "@/types/post.type";
 import dayjs from "dayjs";
 
 type Props = {
@@ -28,6 +32,11 @@ const Page = async ({ params: { id } }: Props) => {
   const postId =
     id.lastIndexOf("-") > 0 ? id.slice(id.lastIndexOf("-") + 1) : id;
   const post = await getBlogPostById(postId);
+  const relatedPostList = await getBlogPostsByCategory({
+    category: post.category.name,
+    limit: 5,
+    page: 0,
+  });
 
   const stringifiedContent = JSON.parse(post.content);
 
@@ -48,6 +57,10 @@ const Page = async ({ params: { id } }: Props) => {
       return acc;
     },
     []
+  );
+
+  const filteredRelatedPostList = relatedPostList?.data.filter(
+    (item: BlogPost) => item._id !== post._id
   );
 
   return (
@@ -102,7 +115,13 @@ const Page = async ({ params: { id } }: Props) => {
         <Keywords tagList={post.tags} />
       </div>
 
-      <PostsInSameCategory category={post?.category} />
+      {filteredRelatedPostList && filteredRelatedPostList.length > 0 && (
+        <PostsInSameCategory
+          category={post?.category}
+          list={filteredRelatedPostList || []}
+          currentPostId={post._id}
+        />
+      )}
 
       <Comments commentList={post.comments || []} />
 

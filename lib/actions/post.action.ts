@@ -204,15 +204,14 @@ export const getBlogPostsByCategory = async ({
   try {
     await connectToDatabase();
 
-    const skipAmount = (Number(page) - 1) * limit;
+    const skipAmount = page === 0 ? page : (Number(page) - 1) * limit;
     const conditions = { category: await getCategoryByName(category) };
 
-    const blogPostQuery = await Post.find(conditions)
+    const blogPost = await Post.find(conditions)
       .sort({ createdAt: "desc" })
       .skip(skipAmount)
       .limit(limit);
 
-    const blogPost = await populatePost(blogPostQuery);
     const postCount = await Post.countDocuments(conditions);
 
     return {

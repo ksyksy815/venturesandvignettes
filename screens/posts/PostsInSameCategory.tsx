@@ -1,12 +1,16 @@
 import { Category } from "@/types/category.type";
+import { BlogPost } from "@/types/post.type";
+import dayjs from "dayjs";
 import Link from "next/link";
 
 type Props = {
   category: Omit<Category, "description">;
+  list: BlogPost[];
+  currentPostId: string;
 };
 
-const PostsInSameCategory = ({ category }: Props) => {
-  const { _id, name } = category;
+const PostsInSameCategory = ({ category, list = [], currentPostId }: Props) => {
+  const { name } = category;
 
   return (
     <section
@@ -17,39 +21,23 @@ const PostsInSameCategory = ({ category }: Props) => {
       >{`Posts on ${name}`}</h3>
 
       <ul className={`flex flex-col gap-y-6 lg:gap-y-3`}>
-        <li>
-          <Link
-            href={"/"}
-            className={`flex flex-col w-full gap-y-2 hover:text-vv-orange lg:flex-row lg:justify-between lg:items-center`}
-          >
-            <p
-              className={`text-lg lg:text-[20px]`}
-            >{`Whispering Woods: Discovering the Serenity of Hidden Forest Retreats`}</p>
-            <span className={`text-sm lg:text-lg`}>{`April 9, 2023`}</span>
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={"/"}
-            className={`flex flex-col w-full gap-y-2 hover:text-vv-orange lg:flex-row lg:justify-between lg:items-center`}
-          >
-            <p
-              className={`text-lg lg:text-[20px]`}
-            >{`Mountain Majesty: A Journey Through the World’s Most Breathtaking Peaks`}</p>
-            <span className={`text-sm lg:text-lg`}>{`April 3, 2023`}</span>
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={"/"}
-            className={`flex flex-col w-full gap-y-2 hover:text-vv-orange lg:flex-row lg:justify-between lg:items-center`}
-          >
-            <p
-              className={`text-lg lg:text-[20px]`}
-            >{`Island Eden: Exploring Pristine Beaches and Untouched Coral Reefs`}</p>
-            <span className={`text-sm lg:text-lg`}>{`March 23, 2023`}</span>
-          </Link>
-        </li>
+        {list?.map((post) => {
+          const { _id, title, createdAt, slug } = post;
+
+          return (
+            <li key={_id}>
+              <Link
+                href={`/posts/${slug}-${_id}`}
+                className={`flex flex-col w-full gap-x-4 gap-y-2 hover:text-vv-orange lg:flex-row lg:justify-between lg:items-center`}
+              >
+                <p className={`text-lg lg:text-[20px] line-clamp-1`}>{title}</p>
+                <span className={`text-sm lg:text-lg whitespace-nowrap`}>
+                  {dayjs(createdAt).format("MMMM DD, YYYY")}
+                </span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
