@@ -7,6 +7,11 @@ export type CreateCommentParams = {
   path: string;
 };
 
+export type GetAllCommentsParams = {
+  limit?: number;
+  page?: number;
+};
+
 export type Comment = {
   _id: string;
   user: string;

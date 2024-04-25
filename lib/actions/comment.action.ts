@@ -1,6 +1,9 @@
 "use server";
 
-import { CreateCommentParams } from "@/types/comment.type";
+import {
+  CreateCommentParams,
+  GetAllCommentsParams,
+} from "@/types/comment.type";
 import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../database";
 import Comment from "../database/models/comment.model";
@@ -36,6 +39,25 @@ export const createComment = async ({
     revalidatePath(path);
 
     return JSON.parse(JSON.stringify(newComment));
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+export const getAllComments = async ({
+  limit = 20,
+  page = 0,
+}: GetAllCommentsParams) => {
+  try {
+    await connectToDatabase();
+
+    const skip = limit * page;
+    const comments = await Comment.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    return JSON.parse(JSON.stringify(comments));
   } catch (error) {
     handleError(error);
   }
