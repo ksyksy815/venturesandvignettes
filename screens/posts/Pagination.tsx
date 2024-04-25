@@ -24,8 +24,8 @@ const Pagination = ({ currentPage, totalPages }: Props) => {
           </svg>
         </button>
         <div className={`flex items-center gap-x-2`}>
-          {Array.from({ length: totalPages }, (_, index) => index + 1).map(
-            (page) => {
+          {Array.from({ length: totalPages + 1 }, (_, index) => index + 1).map(
+            (page, i) => {
               return (
                 <button
                   key={page}
