@@ -20,6 +20,7 @@ const SearchButton = () => {
     }
   }, [showInput]);
 
+
   const handleBlur = () => {
     gsap
       .to(inputRef.current, { x: 250, opacity: 0, duration: 0.5 })
@@ -32,8 +33,21 @@ const SearchButton = () => {
     if (!inputRef.current || !inputRef.current.value || event.key !== "Enter")
       return;
     if (event.key === "Enter" && inputRef.current.value) {
-      const typedKeyword = inputRef.current.value.trim();
+      const typedKeyword = inputRef.current.value
+        .trim()
+        .toLowerCase()
+        .replace(/[^\w\s]/gi, "")
+        .substring(0, 15);
       router.push(`/posts/?keyword=${typedKeyword}`);
+    }
+  };
+
+  const handleClick = () => {
+    if (showInput) {
+      handleBlur();
+    } else {
+      setShowInput(true);
+      inputRef.current?.focus();
     }
   };
 
@@ -46,13 +60,13 @@ const SearchButton = () => {
           placeholder="Search"
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
-          className={`w-[250px] border-b border-black/15 placeholder:text-vv-darkGray placeholder:italic px-3 focus:outline-none`}
+          className={`absolute left-0 w-[250px] border-b border-black/15 placeholder:text-vv-darkGray placeholder:italic px-3 focus:outline-none lg:relative`}
         />
       )}
 
       <button
         type={"button"}
-        onClick={() => setShowInput(true)}
+        onClick={handleClick}
         className={`w-6 h-6 bg-white grid place-content-center`}
       >
         <FiSearch size={24} />
