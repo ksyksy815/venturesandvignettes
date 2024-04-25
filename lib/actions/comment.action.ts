@@ -63,7 +63,17 @@ export const getAllComments = async ({
   }
 };
 
-export const getCommentsByPost = async () => {};
+export const getCommentsByPostId = async (postId: string) => {
+  try {
+    await connectToDatabase();
+
+    const comments = await Comment.find({ postId }).sort({ createdAt: 1 });
+
+    return JSON.parse(JSON.stringify(comments));
+  } catch (error) {
+    handleError(error);
+  }
+};
 
 export const deleteComment = async () => {};
 

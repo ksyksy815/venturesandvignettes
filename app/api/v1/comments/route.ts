@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     const resp = await createComment(payload as CreateCommentParams);
 
     if (!resp) {
-      throw new Error("Failed to create comment");
+      return NextResponse.error();
     }
 
     return {

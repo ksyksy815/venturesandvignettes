@@ -28,7 +28,10 @@ const Comments = ({ commentList = [] }: Props) => {
             const { _id, user, content, createdAt, url } = comment;
 
             return (
-              <li key={_id} className={`flex flex-col w-full gap-y-4`}>
+              <li
+                key={_id}
+                className={`flex flex-col w-full gap-y-4 lg:flex-row`}
+              >
                 <div className={`w-full flex flex-col gap-y-3`}>
                   <div className={`flex flex-col`}>
                     <span className={`text-[20px] text-vv-darkGray`}>
@@ -44,9 +47,11 @@ const Comments = ({ commentList = [] }: Props) => {
                       </Link>
                     )}
                   </div>
-                  <p>{content || ""}</p>
+                  <p className={`font-medium`}>{content || ""}</p>
                 </div>
-                <span className={`self-end text-vv-darkGray`}>
+                <span
+                  className={`self-end text-sm text-vv-darkGray lg:self-center whitespace-nowrap`}
+                >
                   {dayjs(createdAt).format("MMMM DD, YYYY")}
                 </span>
               </li>

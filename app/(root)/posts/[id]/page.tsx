@@ -7,6 +7,7 @@ import TableOfContents, {
   TableOfContentsProps,
 } from "@/components/postBlocks/TableOfContents";
 import BasePage from "@/components/shared/BasePage";
+import { getCommentsByPostId } from "@/lib/actions/comment.action";
 import {
   getBlogPostById,
   getBlogPostsByCategory,
@@ -37,6 +38,8 @@ const Page = async ({ params: { id } }: Props) => {
     limit: 5,
     page: 0,
   });
+
+  const commentList = await getCommentsByPostId(post._id);
 
   const stringifiedContent = JSON.parse(post.content);
 
@@ -123,7 +126,7 @@ const Page = async ({ params: { id } }: Props) => {
         />
       )}
 
-      <Comments commentList={post.comments || []} />
+      <Comments commentList={commentList || []} />
 
       <CommentForm postId={post._id} postSlug={post.slug} />
     </BasePage>
