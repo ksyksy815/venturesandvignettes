@@ -25,7 +25,7 @@ const PostListPage = () => {
 
   return (
     <section
-      className={`w-full flex flex-col px-4 pt-12 py-6 gap-y-6 lg:px-8 lg:pt-16 lg:pb-8`}
+      className={`w-full flex flex-col px-4 pt-12 py-6 gap-y-6 min-h-[481px] lg:px-8 lg:pt-16 lg:pb-8`}
     >
       {keyword ? (
         <SearchResults keyword={keyword} />

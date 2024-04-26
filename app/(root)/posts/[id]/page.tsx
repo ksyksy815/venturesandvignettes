@@ -3,10 +3,10 @@ import DefaultBlock from "@/components/postBlocks/DefaultBlock";
 import HeaderBlock from "@/components/postBlocks/HeaderBlock";
 import ImageBlock from "@/components/postBlocks/ImageBlock";
 import Keywords from "@/components/postBlocks/Keywords";
-import TableOfContents, {
-  TableOfContentsProps,
-} from "@/components/postBlocks/TableOfContents";
+import TableOfContents from "@/components/postBlocks/TableOfContents";
 import BasePage from "@/components/shared/BasePage";
+import Breadcrumb from "@/components/shared/Breadcrumb";
+import { extractHeadersFromContents } from "@/helpers/post/post.helper";
 import { getCommentsByPostId } from "@/lib/actions/comment.action";
 import {
   getBlogPostById,
@@ -43,24 +43,7 @@ const Page = async ({ params: { id } }: Props) => {
 
   const stringifiedContent = JSON.parse(post.content);
 
-  const headers: TableOfContentsProps["headers"] = stringifiedContent.reduce(
-    (
-      acc: TableOfContentsProps["headers"],
-      cur: CustomElement,
-      index: number
-    ) => {
-      if (cur.type.includes("header")) {
-        const newHeader = {
-          ...cur,
-          index,
-        };
-
-        return [...acc, newHeader];
-      }
-      return acc;
-    },
-    []
-  );
+  const headers = extractHeadersFromContents(stringifiedContent);
 
   const filteredRelatedPostList = relatedPostList?.data.filter(
     (item: BlogPost) => item._id !== post._id
@@ -69,6 +52,7 @@ const Page = async ({ params: { id } }: Props) => {
   return (
     <BasePage className={`bg-white`}>
       <div className={`w-full flex flex-col pb-6 lg:py-12 lg:px-[144px]`}>
+        <Breadcrumb />
         <section>
           <img
             src={post.image}
