@@ -52,6 +52,7 @@ const useCreatePostPage = () => {
       userId,
       blogPost: {
         ...metaData,
+        slug: metaData.slug.trim(),
         image: imageUrl,
         tags: tagIds || [],
         isDisplayed: false,
