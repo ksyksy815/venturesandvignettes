@@ -1,5 +1,5 @@
 import { TableOfContentsProps } from "@/components/postBlocks/TableOfContents";
-import { CustomElement } from "@/types/edidor.type";
+import { CustomElement } from "@/types/editor.type";
 
 export const extractHeadersFromContents = (
   list: any[]

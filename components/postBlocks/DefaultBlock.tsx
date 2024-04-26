@@ -1,4 +1,4 @@
-import { ParagraphElementType } from "@/types/edidor.type";
+import { ParagraphElementType } from "@/types/editor.type";
 
 type Props = ParagraphElementType;
 

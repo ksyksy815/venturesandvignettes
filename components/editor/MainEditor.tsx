@@ -1,6 +1,6 @@
 "use client";
 
-import { CustomElement, CustomText } from "@/types/edidor.type";
+import { CustomElement, CustomText } from "@/types/editor.type";
 import { useCallback } from "react";
 import { BaseEditor, Editor } from "slate";
 import {
@@ -90,7 +90,7 @@ const MainEditor = ({ editor, initialValue }: Props) => {
       >
         <ToolBar editor={editor} />
         <Editable
-          className={`editor-element-padding min-h-[70vh] lg:py-8 bg-white focus:outline-none rounded-lg`}
+          className={`min-h-[70vh] lg:py-8 bg-white focus:outline-none rounded-lg`}
           onChange={(value) => {
             console.log("onChange", value);
           }}

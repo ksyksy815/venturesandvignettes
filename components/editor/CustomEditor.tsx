@@ -2,7 +2,7 @@ import {
   CustomElement,
   ParagraphElementType,
   SectionElementType,
-} from "@/types/edidor.type";
+} from "@/types/editor.type";
 import { Editor, Editor as EditorType, Element, Transforms } from "slate";
 
 const embedRegex = [

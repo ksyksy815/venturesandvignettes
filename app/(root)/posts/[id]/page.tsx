@@ -15,7 +15,7 @@ import {
 import CommentForm from "@/screens/posts/CommentForm";
 import Comments from "@/screens/posts/Comments";
 import PostsInSameCategory from "@/screens/posts/PostsInSameCategory";
-import { CustomElement } from "@/types/edidor.type";
+import { CustomElement } from "@/types/editor.type";
 import { BlogPost } from "@/types/post.type";
 import dayjs from "dayjs";
 

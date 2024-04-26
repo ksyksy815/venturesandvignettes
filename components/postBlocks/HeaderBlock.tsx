@@ -2,7 +2,7 @@ import {
   HeaderOneElementType,
   HeaderThreeElementType,
   HeaderTwoElementType,
-} from "@/types/edidor.type";
+} from "@/types/editor.type";
 
 type Props = (
   | HeaderOneElementType

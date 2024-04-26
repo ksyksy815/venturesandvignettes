@@ -1,4 +1,4 @@
-import { YouTubeElementType } from "@/types/edidor.type";
+import { YouTubeElementType } from "@/types/editor.type";
 import YouTubeEmbed from "react-youtube";
 import { type RenderElementProps } from "slate-react";
 

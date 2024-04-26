@@ -1,4 +1,4 @@
-import { CustomElement } from "@/types/edidor.type";
+import { CustomElement } from "@/types/editor.type";
 import { useState } from "react";
 import { createEditor } from "slate";
 import { withReact } from "slate-react";

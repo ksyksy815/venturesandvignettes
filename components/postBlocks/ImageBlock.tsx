@@ -1,4 +1,4 @@
-import { ImageElementType } from "@/types/edidor.type";
+import { ImageElementType } from "@/types/editor.type";
 import Image from "next/image";
 
 type Props = {

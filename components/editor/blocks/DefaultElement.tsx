@@ -1,12 +1,19 @@
 import type { RenderElementProps } from "slate-react";
+import BlockEditorWrapper from "./BlockEditorWrapper";
 
-const DefaultElement = (props: RenderElementProps) => {
+const DefaultElement = ({
+  element,
+  attributes,
+  children,
+}: RenderElementProps) => {
   return (
-    <div className={`relative w-full`}>
-      <p {...props.attributes} style={{ marginBottom: "1rem" }}>
-        {props.children}
-      </p>
-    </div>
+    <BlockEditorWrapper type={element.type}>
+      <div className={`relative w-full`}>
+        <p {...attributes} style={{ marginBottom: "1rem" }}>
+          {children}
+        </p>
+      </div>
+    </BlockEditorWrapper>
   );
 };
 

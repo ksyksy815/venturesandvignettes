@@ -1,6 +1,6 @@
 "use client";
 
-import { CustomElement } from "@/types/edidor.type";
+import { CustomElement } from "@/types/editor.type";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { useRef, useState } from "react";

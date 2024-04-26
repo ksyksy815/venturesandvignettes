@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { POST_DEFAULT_VALUES } from "@/constants";
 import useMainEditor from "@/hooks/editor/useMainEditor";
 import useCreatePostPage from "@/hooks/post/useCreatePostPage";
-import { CustomElement } from "@/types/edidor.type";
+import { CustomElement } from "@/types/editor.type";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

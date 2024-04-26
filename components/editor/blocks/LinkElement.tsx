@@ -1,4 +1,4 @@
-import type { LinkElementType } from "@/types/edidor.type";
+import type { LinkElementType } from "@/types/editor.type";
 import type { RenderElementProps } from "slate-react";
 
 const LinkElement = ({ attributes, children, element }: RenderElementProps) => {
