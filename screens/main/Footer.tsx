@@ -1,13 +1,14 @@
 import TopButton from "@/components/shared/TopButton";
 import Link from "next/link";
-import { FiArrowUpCircle } from "react-icons/fi";
 
 const Footer = () => {
   return (
     <footer
-      className={`relative flex flex-col w-full max-w-5xl bg-vv-black text-vv-bgGray px-6 py-6 gap-y-8`}>
+      className={`relative flex flex-col w-full max-w-5xl bg-vv-black text-vv-bgGray px-6 py-6 gap-y-8`}
+    >
       <ul
-        className={`flex flex-col justify-center gap-y-2 lg:flex-row lg:gap-x-12`}>
+        className={`flex flex-col justify-center gap-y-2 lg:flex-row lg:gap-x-12`}
+      >
         <li className={`hover:text-vv-orange`}>
           <Link href={`/`} prefetch={false}>
             Home
@@ -18,15 +19,19 @@ const Footer = () => {
             Posts
           </Link>
         </li>
-        <li className={`hover:text-vv-orange`}>
-          <Link href={`/privacy-policy`} prefetch={false}>
+        <li className={`hover:text-vv-orange hover:cursor-not-allowed`}>
+          {" "}
+          Privacy & Policy
+          {/* <Link href={`/privacy-policy`} prefetch={false}>
             Privacy & Policy
-          </Link>
+          </Link> */}
         </li>
-        <li className={`hover:text-vv-orange`}>
-          <Link href={`/terms-of-use`} prefetch={false}>
+        <li className={`hover:text-vv-orange hover:cursor-not-allowed`}>
+          {" "}
+          Terms of Use
+          {/* <Link href={`/terms-of-use`} prefetch={false}>
             Terms of Use
-          </Link>
+          </Link> */}
         </li>
         <li>
           <Link href={`/login`} prefetch={false}>
@@ -46,7 +51,8 @@ const Footer = () => {
       <div
         className={
           "w-full text-[10px] text-left lg:text-center text-xs opacity-70"
-        }>
+        }
+      >
         Ventures & Vignettes. All rights reserved.
       </div>
       <TopButton />
