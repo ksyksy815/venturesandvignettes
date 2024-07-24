@@ -20,7 +20,6 @@ const SearchButton = () => {
     }
   }, [showInput]);
 
-
   const handleBlur = () => {
     gsap
       .to(inputRef.current, { x: 250, opacity: 0, duration: 0.5 })
@@ -68,6 +67,7 @@ const SearchButton = () => {
         type={"button"}
         onClick={handleClick}
         className={`w-6 h-6 bg-white grid place-content-center`}
+        aria-label={"search button"}
       >
         <FiSearch size={24} />
       </button>

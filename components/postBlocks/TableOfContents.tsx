@@ -41,6 +41,7 @@ const TableOfContents = ({ headers }: TableOfContentsProps) => {
           type={"button"}
           onClick={handleClick}
           className={`h-[30px] w-[30px] grid place-content-center`}
+          aria-label={"toggle table of contents"}
         >
           {showContents ? (
             <FiChevronUp size={22} />

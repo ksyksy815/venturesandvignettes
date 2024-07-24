@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { FiArrowUp } from "react-icons/fi";
 
 const TopButton = () => {
@@ -15,7 +14,9 @@ const TopButton = () => {
     <button
       type={`button`}
       className={`absolute bottom-6 right-6 hover:border-t-[2px] hover:translate-y-[-4px]`}
-      onClick={handleClick}>
+      aria-label={"scroll to top"}
+      onClick={handleClick}
+    >
       <FiArrowUp size={28} />
     </button>
   );

@@ -7,7 +7,10 @@ const Pagination = ({ currentPage, totalPages }: Props) => {
   return (
     <div className={`w-full flex items-center justify-center`}>
       <div className={`flex items-center gap-x-2`}>
-        <button className={`w-10 h-10 flex items-center justify-center`}>
+        <button
+          className={`w-10 h-10 flex items-center justify-center`}
+          aria-label={"previous page"}
+        >
           <svg
             className={`w-4 h-4`}
             fill="none"
@@ -51,6 +54,7 @@ const Pagination = ({ currentPage, totalPages }: Props) => {
           )}
         </div>
         <button
+          aria-label={"next page"}
           className={`w-10 h-10 flex items-center justify-center hover:text-vv-orange`}
         >
           <svg
