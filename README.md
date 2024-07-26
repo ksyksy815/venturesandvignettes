@@ -19,7 +19,7 @@ Ventures and Vignettes is a personal travel blog project featuring a highly cust
 
 ## 🌐 Live Site
 
-Check out the live site at: [Ventures and Vignettes](https://your-deployed-site-url.com)
+Check out the live site at: [Ventures and Vignettes](https://venturesandvignettes.com)
 
 ## 📬 Contact
 
